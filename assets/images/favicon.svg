@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">2202 Labs favicon</title>
+  <desc id="desc">Dark square icon with a centered 22 mark in teal.</desc>
+  <rect width="64" height="64" rx="14" fill="#151b20"/>
+  <rect x="10" y="10" width="44" height="44" rx="10" fill="none" stroke="#56b5c5" stroke-opacity="0.35"/>
+  <path d="M18 48H46" stroke="#56b5c5" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.7"/>
+  <text
+    x="32"
+    y="37"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="24"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#edf2f4"
+  >22</text>
+</svg>

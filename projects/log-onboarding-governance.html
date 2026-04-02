@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Onboarding and Governance | 2202 Labs</title>
+  <meta
+    name="description"
+    content="Technical case study on structured log onboarding, retention control, and operational governance for Splunk environments."
+  >
+  <meta property="og:title" content="Log Onboarding and Governance | 2202 Labs">
+  <meta property="og:description" content="Case study on structured log onboarding, retention control, and operational governance for Splunk environments.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://2202labs.github.io/projects/log-onboarding-governance.html">
+  <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body class="project-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">2202 Labs</a>
+      <nav class="site-nav" aria-label="Project navigation">
+        <a href="../index.html">Home</a>
+        <a href="#scope">Scope</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#governance">Governance</a>
+        <a href="#outcomes">Outcomes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case-main">
+    <section class="section case-hero">
+      <div class="case-shell">
+        <p class="eyebrow">Project Case Study</p>
+        <h1>Log Onboarding and Governance</h1>
+        <p class="case-subtitle">
+          Structured onboarding, retention control, and operational governance for Splunk
+          environments.
+        </p>
+        <p class="case-intro">
+          This work focused on bringing data into Splunk in a way that was supportable, useful, and
+          aligned with security, audit, and operational requirements. The engineering problem was
+          not just ingestion, but making sure onboarded data could be retained appropriately,
+          understood by operators, and used reliably over time.
+        </p>
+        <div class="case-meta" aria-label="Project metadata">
+          <span>Splunk</span>
+          <span>Log onboarding</span>
+          <span>Retention governance</span>
+          <span>Operational supportability</span>
+        </div>
+        <div class="button-row">
+          <a class="button button-primary" href="#governance">View Governance</a>
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="why">
+      <div class="case-shell">
+        <p class="eyebrow">Why This Work Matters</p>
+        <h2>Log onboarding is not just an ingestion step.</h2>
+        <p>
+          Bringing data into Splunk has downstream consequences well beyond whether events arrive in
+          the index. Onboarded data affects how engineers search, how analysts investigate, how long
+          evidence remains available, and whether dashboards and alerts are built on data that is
+          actually usable.
+        </p>
+        <ul class="case-list">
+          <li>Searchability depends on usable fields, consistent structure, and understandable data.</li>
+          <li>Retention choices affect cost, operational value, and audit readiness.</li>
+          <li>Dashboards and alerts depend on data quality, stability, and clear semantics.</li>
+          <li>Audit evidence depends on knowing what data exists, how long it remains, and how it can be retrieved.</li>
+          <li>Long-term maintainability depends on onboarding work being supportable after initial delivery.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="directive-model">
+      <div class="case-shell">
+        <p class="eyebrow">Directive-Based Model</p>
+        <h2>Onboarding was driven by a fixed reporting structure.</h2>
+        <p>
+          Log onboarding was governed by a fixed reporting directive rather than treated as an
+          isolated ingestion task. Reports were categorized by source type, such as operating
+          system, database, and application sources, and evaluated against a standard set of six
+          security use cases.
+        </p>
+        <p>
+          For each new source, the onboarding process included determining which of the six use
+          cases were applicable, what logs or fields were required, and whether the resulting data
+          would support meaningful reporting, monitoring, and review outcomes.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="scope">
+      <div class="case-shell">
+        <p class="eyebrow">Scope of the Work</p>
+        <h2>Onboarding work starts with requirements and ends with supportable data.</h2>
+        <p>
+          In practice, log onboarding required more than configuring inputs. The work involved
+          engaging stakeholders, understanding why the data mattered, identifying the right sources,
+          aligning onboarding decisions with operational, monitoring, and retention needs, and
+          facilitating with users to identify logs that matched the required use cases. That also
+          included helping determine which events, fields, and keywords were relevant, and advising
+          use-case simulation on the relevant platform when users were unsure what logs to provide.
+        </p>
+        <ul class="case-list">
+          <li>Engaging stakeholders to understand logging requirements</li>
+          <li>Identifying relevant log sources and expected operational value</li>
+          <li>Aligning onboarding with operational and retention needs</li>
+          <li>Facilitating with users to identify logs that matched the required use cases</li>
+          <li>Helping determine relevant events, fields, and keywords</li>
+          <li>Advising use-case simulation on the relevant platform when users were unsure what logs to provide</li>
+          <li>Configuration reporting for end users as part of delivery</li>
+          <li>Coordinating parsing and field extraction requirements</li>
+          <li>Improving data quality and search usability</li>
+          <li>Supporting dashboards, reporting, and monitoring use cases</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="role">
+      <div class="case-shell">
+        <p class="eyebrow">My Role</p>
+        <h2>Facilitating from reporting intent to usable log data.</h2>
+        <p>
+          A key part of the work was facilitating with users to identify logs that matched the
+          required use cases. In practice, this meant translating reporting intent into
+          platform-specific logging requirements and helping determine what events, fields, or
+          keywords were relevant.
+        </p>
+        <p>
+          When users were unsure what logs to provide, I would advise them to perform use-case
+          simulation on the relevant platform to generate representative log activity. This helped
+          confirm whether the right events were being captured and whether the onboarded data would
+          support the intended report.
+        </p>
+        <p>
+          Configuration reporting for end users was also part of delivery once onboarding and
+          validation were complete.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="workflow">
+      <div class="case-shell">
+        <p class="eyebrow">Workflow / Delivery Model</p>
+        <h2>A practical onboarding lifecycle for operationally useful data.</h2>
+        <ol class="case-flow">
+          <li>Classify the source as OS, DB, or Application.</li>
+          <li>Identify which of the six directive use cases apply.</li>
+          <li>Facilitate with users on the logs, events, or keywords needed.</li>
+          <li>Where needed, simulate the use case to generate representative logs.</li>
+          <li>Coordinate onboarding, parsing, and validation.</li>
+          <li>Confirm report usability, search outcomes, and governance alignment.</li>
+          <li>Generate a Splunk configuration report for end users.</li>
+          <li>Support ongoing governance and lifecycle management.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section" id="governance">
+      <div class="case-shell">
+        <p class="eyebrow">Governance and Operational Considerations</p>
+        <h2>Retention and usability are part of engineering ownership.</h2>
+        <p>
+          Governance in Splunk is not only about where data lands or how much storage it consumes.
+          It includes deciding how long data should remain available, whether the onboarded output
+          stays understandable for future users, and whether that data continues to support
+          monitoring, investigations, evidence extraction, and reporting after the initial delivery
+          work is complete.
+        </p>
+        <p>
+          Governance was not only about retention and storage, but also about ensuring the
+          onboarded data remained aligned to the reporting directive and usable for the intended use
+          cases.
+        </p>
+        <ul class="case-list">
+          <li>Retention decisions are part of governance, not just storage management.</li>
+          <li>Onboarded data must remain usable and understandable after initial ingestion.</li>
+          <li>Data quality affects downstream dashboards, alerts, and investigations.</li>
+          <li>Supportability still matters after onboarding is technically complete.</li>
+          <li>Governance requires thinking about lifecycle, audit readiness, and operational value.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="challenges">
+      <div class="case-shell">
+        <p class="eyebrow">Common Challenges</p>
+        <h2>Technical success can still fail operationally.</h2>
+        <p>
+          Log onboarding often looks complete once data is arriving, but real problems usually show
+          up later in usability, ownership, and support. Practical engineering maturity comes from
+          recognising those issues early and addressing them as part of delivery.
+        </p>
+        <ul class="case-list">
+          <li>Incomplete or inconsistent source data</li>
+          <li>Unclear ownership of source systems</li>
+          <li>Retention expectations not matching storage or operational reality</li>
+          <li>Fields not extracted in a useful way</li>
+          <li>Data onboarding succeeding technically but failing operationally because the output is hard to use</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="perspective">
+      <div class="case-shell">
+        <p class="eyebrow">Practical Engineering Perspective</p>
+        <h2>Value comes from usable data, not just indexed data.</h2>
+        <p>
+          The point of onboarding was not simply to prove that logs could be ingested. The work had
+          to produce data that teams could actually use to operate services, understand incidents,
+          support reporting, and satisfy compliance or audit needs.
+        </p>
+        <ul class="case-list">
+          <li>Monitoring</li>
+          <li>Dashboards</li>
+          <li>Investigations</li>
+          <li>Reporting</li>
+          <li>Compliance and audit support</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="platform">
+      <div class="case-shell">
+        <p class="eyebrow">Relationship to the Broader Platform</p>
+        <h2>Log onboarding connects directly to platform value.</h2>
+        <p>
+          Onboarding decisions shape the usefulness of the wider Splunk platform. Data quality,
+          field structure, retention, and governance controls all influence whether SIEM use cases,
+          troubleshooting workflows, evidence extraction, and operational reporting can be supported
+          consistently.
+        </p>
+        <ul class="case-list">
+          <li>SIEM use cases</li>
+          <li>Dashboards and alerts</li>
+          <li>Operational troubleshooting</li>
+          <li>Evidence extraction</li>
+          <li>Retention and governance controls</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="configuration-reporting">
+      <div class="case-shell">
+        <p class="eyebrow">Configuration Reporting</p>
+        <h2>Delivery included a usable configuration summary.</h2>
+        <p>
+          As part of delivery, I generated a Splunk configuration report that summarized the
+          onboarded setup for the end user. This served as a practical handover and review artifact,
+          typically covering the list of hosts, the list of reports, and the list of sources
+          associated with the configured environment.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="outcomes">
+      <div class="case-shell">
+        <p class="eyebrow">Key Outcomes</p>
+        <h2>Better onboarding discipline leads to better platform support.</h2>
+        <ul class="case-list">
+          <li>More structured onboarding process</li>
+          <li>Better alignment between source data and operational use</li>
+          <li>Improved usability of onboarded data</li>
+          <li>Stronger retention and governance alignment</li>
+          <li>Better support for reporting, monitoring, and audit activities</li>
+        </ul>
+        <div class="case-footer-links">
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="case-shell footer-shell">
+      <p>2202 Labs</p>
+      <p>&copy; 2026 Gabriel Wu</p>
+    </div>
+  </footer>
+</body>
+</html>

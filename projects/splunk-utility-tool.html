@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splunk Utility Tool 4.0 | 2202 Labs</title>
+  <meta
+    name="description"
+    content="Technical case study for Splunk Utility Tool 4.0, a Python-based operational tooling platform for Splunk workflow orchestration and distributed job dispatch."
+  >
+  <meta property="og:title" content="Splunk Utility Tool 4.0 | 2202 Labs">
+  <meta property="og:description" content="Technical case study for Splunk Utility Tool 4.0, a Python-based operational tooling platform for Splunk workflow orchestration and distributed job dispatch.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://2202labs.github.io/projects/splunk-utility-tool.html">
+  <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body class="project-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">2202 Labs</a>
+      <nav class="site-nav" aria-label="Project navigation">
+        <a href="../index.html">Home</a>
+        <a href="#context">Problem</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#reliability">Reliability</a>
+        <a href="#outcomes">Outcomes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case-main">
+    <section class="section case-hero">
+      <div class="case-shell">
+        <p class="eyebrow">Flagship Project</p>
+        <h1>Splunk Utility Tool 4.0</h1>
+        <p class="case-subtitle">
+          Python-based operational tooling platform for Splunk workflow orchestration, distributed
+          job dispatch, and managed report lifecycle execution.
+        </p>
+        <p class="case-intro">
+          Splunk Utility Tool 4.0 was built to reduce manual overhead, improve execution
+          reliability, and support long-running or segmented operational workflows used by
+          roughly 50 engineers.
+        </p>
+        <div class="case-meta" aria-label="Project metadata">
+          <span>Python</span>
+          <span>Tkinter</span>
+          <span>Workflow orchestration</span>
+          <span>Splunk operations</span>
+        </div>
+        <div class="button-row">
+          <a class="button button-primary" href="#architecture">View Architecture</a>
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="context">
+      <div class="case-shell">
+        <p class="eyebrow">Problem Context</p>
+        <h2>Operational workflows were repeatable, but execution remained manual and inconsistent.</h2>
+        <p>
+          The project started from a familiar Splunk operations problem: many tasks followed the
+          same general pattern, but each run still required manual coordination. Repeated query
+          execution, report generation, segmented searches, and operational follow-through often
+          depended on an engineer watching the process and managing exceptions in real time.
+        </p>
+        <p>
+          That model became difficult to sustain once workloads grew longer-running or needed to be
+          split into smaller units. The burden was not only the execution itself, but the manual
+          work around it: deciding how to divide a job, tracking which segments had completed,
+          handling failures, and determining whether a retry should rerun the whole process or only
+          the part that failed.
+        </p>
+        <ul class="case-list">
+          <li>Repetitive execution of similar Splunk tasks</li>
+          <li>Long-running queries and report workflows</li>
+          <li>Manual splitting and coordination of workloads</li>
+          <li>Ad-hoc failure handling and retries</li>
+          <li>High manual overhead and inconsistent execution outcomes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="overview">
+      <div class="case-shell">
+        <p class="eyebrow">System Overview</p>
+        <h2>A workflow orchestration layer above day-to-day Splunk operations.</h2>
+        <p>
+          Splunk Utility Tool 4.0 acts as an orchestration layer over operational work that would
+          otherwise be run manually or coordinated through fragmented scripts. Instead of treating
+          each execution as a one-off task, the tool gives the workflow a structure: define the job,
+          segment the execution, dispatch the work, track state, and merge results under controlled
+          conditions.
+        </p>
+        <p>
+          The goal is not to replace Splunk, but to standardise and control how complex operational
+          work is executed around it.
+        </p>
+        <div class="case-transition">
+          <div class="case-block">
+            <h3>Manual execution</h3>
+            <p>
+              Operators launch and monitor runs directly, split workloads by hand, and manage
+              retries based on observation and local judgment.
+            </p>
+          </div>
+          <div class="case-block">
+            <h3>Structured orchestration</h3>
+            <p>
+              Jobs move through a defined lifecycle with segmented execution, explicit state
+              tracking, controlled retries, and predictable result handling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="architecture">
+      <div class="case-shell">
+        <p class="eyebrow">Architecture Design</p>
+        <h2>Components organised around dispatch, tracking, and controlled completion.</h2>
+        <p>
+          Version 4.0 is structured around a small number of cooperating components. Each one is
+          simple on its own, but together they form a disciplined execution model for segmented
+          operational work.
+        </p>
+        <dl class="case-definition-list">
+          <div class="case-definition">
+            <dt>Python/Tkinter client interface</dt>
+            <dd>
+              Provides the operator-facing control surface for defining jobs, initiating execution,
+              and reviewing status without turning the process into a command-line-only workflow.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Job coordinator / dispatcher</dt>
+            <dd>
+              Takes a declared job, converts it into executable units, and assigns slices for
+              independent processing according to the orchestration rules.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Execution slices</dt>
+            <dd>
+              Break larger operational workloads into manageable segments so long-running queries and
+              report pipelines can be distributed, monitored, retried, or resumed with finer
+              control.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>State tracking layer</dt>
+            <dd>
+              Captures execution status explicitly rather than leaving progress to operator memory
+              or log review. This makes partial completion and targeted retry practical.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt><code>MergeReport</code> / result aggregation</dt>
+            <dd>
+              Reassembles outputs from completed slices into a controlled final result instead of
+              relying on ad-hoc manual collation after the work has finished.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="case-section" id="concepts">
+      <div class="case-shell">
+        <p class="eyebrow">Key Engineering Concepts</p>
+        <h2>Execution is treated as a managed lifecycle, not a single command.</h2>
+        <ul class="case-list">
+          <li>
+            <strong>Distributed job dispatch:</strong> Larger tasks are decomposed into slices that
+            can run independently rather than serialising everything through one manual path.
+          </li>
+          <li>
+            <strong>Lifecycle-based execution:</strong> Jobs move through a defined sequence from
+            definition to dispatch, completion, and merge, which makes behaviour easier to reason
+            about.
+          </li>
+          <li>
+            <strong>Explicit state awareness:</strong> The system tracks where work stands so
+            retries and partial reruns are based on known status rather than guesswork.
+          </li>
+          <li>
+            <strong>Controlled aggregation:</strong> Outputs are collected and merged deliberately
+            so the final result reflects confirmed slice completion and not just process optimism.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="workflow">
+      <div class="case-shell">
+        <p class="eyebrow">Workflow / Execution Model</p>
+        <h2>Ordered flow from job definition to final merged output.</h2>
+        <ol class="case-flow">
+          <li>User defines a job.</li>
+          <li>Job is broken into slices.</li>
+          <li>Dispatcher assigns slices.</li>
+          <li>Each slice runs independently.</li>
+          <li>State is tracked.</li>
+          <li>Results are collected.</li>
+          <li>Final output is merged.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section" id="reliability">
+      <div class="case-shell">
+        <p class="eyebrow">Reliability and Failure Handling</p>
+        <h2>Failure is handled as part of the model, not as an afterthought.</h2>
+        <p>
+          A key design goal was to make uncertainty visible and manageable. Long-running operational
+          work can fail in ways that do not cleanly map to success or failure, especially when an
+          execution path times out before the real outcome is fully known. The tool therefore
+          recognises states such as <code class="case-code">TIMEOUT_UNCERTAIN</code> so the
+          workflow can react explicitly instead of assuming safe completion.
+        </p>
+        <ul class="case-list">
+          <li>
+            <strong><code class="case-code">TIMEOUT_UNCERTAIN</code>:</strong> acknowledges that a
+            timeout may leave the system in an indeterminate but recoverable state.
+          </li>
+          <li>
+            <strong>Taint-and-recycle pattern:</strong> questionable execution paths can be marked
+            as tainted and recycled through a controlled retry path instead of contaminating the
+            final result.
+          </li>
+          <li>
+            <strong>Partial completion support:</strong> completed slices do not need to be
+            discarded when only a subset of work fails.
+          </li>
+          <li>
+            <strong>Retry at slice level:</strong> reruns can target the specific failed segment,
+            reducing cost and avoiding unnecessary repeated processing.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="evolution">
+      <div class="case-shell">
+        <p class="eyebrow">Evolution to Version 4.0</p>
+        <h2>From smaller automation utilities to explicit orchestration.</h2>
+        <p>
+          Earlier versions focused more on smaller-scale automation and direct operational support.
+          Version 4.0 represents a shift toward structured orchestration: jobs are treated as
+          lifecycle-managed units, segmented workloads are handled deliberately, and state becomes a
+          first-class concern rather than an implied side effect of execution.
+        </p>
+        <p>
+          That change matters because the engineering problem is no longer just "how do we automate
+          this task," but "how do we operate this workflow repeatedly, reliably, and with enough
+          control to recover from partial failure."
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="direction">
+      <div class="case-shell">
+        <p class="eyebrow">Current Direction</p>
+        <h2>Moving toward a more platform-native operating model.</h2>
+        <p>
+          <strong>SUTW</strong> (Splunk Utility Tool Web) is in development as the next direction
+          for the project. The goal is a web-based, more platform-native version of the same core
+          ideas: structured execution, clearer state visibility, and a workflow model that is easier
+          to operate and extend in shared environments.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="stack">
+      <div class="case-shell">
+        <p class="eyebrow">Implementation Context</p>
+        <h2>Core technologies and execution model.</h2>
+        <ul class="case-list">
+          <li>Python</li>
+          <li>Tkinter client interface</li>
+          <li>Workflow orchestration logic</li>
+          <li>State tracking and aggregation model</li>
+          <li>Splunk operational execution context</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section" id="significance">
+      <div class="case-shell">
+        <p class="eyebrow">Operational Significance</p>
+        <h2>Why this matters in practice.</h2>
+        <p>
+          This design reduces the need for engineers to manually coordinate segmented execution,
+          watch for ambiguous failures, and decide recovery paths in real time. By formalising state
+          and recovery behaviour, the tool makes repeated operational workflows more predictable,
+          easier to support, and less dependent on constant operator intervention.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="outcomes">
+      <div class="case-shell">
+        <p class="eyebrow">Key Outcomes</p>
+        <h2>Operational gains from structured execution.</h2>
+        <ul class="case-list">
+          <li>Reduced manual coordination across repeated Splunk workflows</li>
+          <li>Improved reliability for segmented and long-running execution paths</li>
+          <li>Better visibility into execution state and completion status</li>
+          <li>More controlled handling of retries and failures</li>
+          <li>Foundation for a future platform-native direction through SUTW</li>
+        </ul>
+        <div class="case-footer-links">
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="case-shell footer-shell">
+      <p>2202 Labs</p>
+      <p>&copy; 2026 Gabriel Wu</p>
+    </div>
+  </footer>
+</body>
+</html>
