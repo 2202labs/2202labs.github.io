@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 280" role="img" aria-labelledby="title desc">
+  <title id="title">Splunk Utility Tool 4.0 workflow overview</title>
+  <desc id="desc">High-level workflow showing input, validation, workflow selection, segmented job dispatch, task execution, status output, and operator review.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10Z" fill="#56b5c5"/>
+    </marker>
+    <style>
+      text {
+        font-family: Inter, "Segoe UI", sans-serif;
+      }
+      .flow-box {
+        fill: #1b232b;
+        stroke: rgba(132, 173, 195, 0.3);
+        stroke-width: 1.5;
+      }
+      .flow-line {
+        fill: none;
+        stroke: #56b5c5;
+        stroke-width: 2;
+        stroke-linecap: round;
+        opacity: 0.9;
+      }
+      .box-label {
+        fill: #edf2f4;
+        font-size: 26px;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+      .box-copy {
+        fill: #9eacb8;
+        font-size: 17px;
+        font-weight: 500;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <path class="flow-line" d="M190 140H206" marker-end="url(#arrow)"/>
+  <path class="flow-line" d="M380 140H396" marker-end="url(#arrow)"/>
+  <path class="flow-line" d="M570 140H586" marker-end="url(#arrow)"/>
+  <path class="flow-line" d="M760 140H776" marker-end="url(#arrow)"/>
+  <path class="flow-line" d="M950 140H966" marker-end="url(#arrow)"/>
+  <path class="flow-line" d="M1140 140H1156" marker-end="url(#arrow)"/>
+
+  <rect class="flow-box" x="30" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="110" y="118">
+    <tspan x="110" dy="0">Input /</tspan>
+    <tspan x="110" dy="30">Request</tspan>
+  </text>
+  <text class="box-copy" x="110" y="168">
+    <tspan x="110" dy="0">selected workflow</tspan>
+    <tspan x="110" dy="22">and parameters</tspan>
+  </text>
+
+  <rect class="flow-box" x="220" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="300" y="133">Validation</text>
+  <text class="box-copy" x="300" y="168">
+    <tspan x="300" dy="0">required inputs</tspan>
+    <tspan x="300" dy="22">and pre-checks</tspan>
+  </text>
+
+  <rect class="flow-box" x="410" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="490" y="118">
+    <tspan x="490" dy="0">Workflow</tspan>
+    <tspan x="490" dy="30">Selection</tspan>
+  </text>
+  <text class="box-copy" x="490" y="168">
+    <tspan x="490" dy="0">map to the correct</tspan>
+    <tspan x="490" dy="22">task path</tspan>
+  </text>
+
+  <rect class="flow-box" x="600" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="680" y="118">
+    <tspan x="680" dy="0">Segmented Job</tspan>
+    <tspan x="680" dy="30">Dispatch</tspan>
+  </text>
+  <text class="box-copy" x="680" y="168">
+    <tspan x="680" dy="0">controlled</tspan>
+    <tspan x="680" dy="22">execution stages</tspan>
+  </text>
+
+  <rect class="flow-box" x="790" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="870" y="118">
+    <tspan x="870" dy="0">Task</tspan>
+    <tspan x="870" dy="30">Execution</tspan>
+  </text>
+  <text class="box-copy" x="870" y="168">
+    <tspan x="870" dy="0">run the assigned</tspan>
+    <tspan x="870" dy="22">operational tasks</tspan>
+  </text>
+
+  <rect class="flow-box" x="980" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="1060" y="118">
+    <tspan x="1060" dy="0">Status /</tspan>
+    <tspan x="1060" dy="30">Output</tspan>
+  </text>
+  <text class="box-copy" x="1060" y="168">
+    <tspan x="1060" dy="0">capture run</tspan>
+    <tspan x="1060" dy="22">result and state</tspan>
+  </text>
+
+  <rect class="flow-box" x="1170" y="80" width="160" height="120" rx="20"/>
+  <text class="box-label" x="1250" y="118">
+    <tspan x="1250" dy="0">Operator</tspan>
+    <tspan x="1250" dy="30">Review</tspan>
+  </text>
+  <text class="box-copy" x="1250" y="168">
+    <tspan x="1250" dy="0">review outcome</tspan>
+    <tspan x="1250" dy="22">and follow-up action</tspan>
+  </text>
+</svg>
