@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Bot for Game Utility | 2202 Labs</title>
+  <meta
+    name="description"
+    content="A personal side project built around a game-related use case, and a practical way to explore Docker, n8n, and Playwright through a publicly usable Telegram bot."
+  >
+  <meta property="og:title" content="Telegram Bot for Game Utility | 2202 Labs">
+  <meta property="og:description" content="A personal side project built around a game-related use case, and a practical way to explore Docker, n8n, and Playwright through a publicly usable Telegram bot.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://2202labs.github.io/projects/telegram-bot-game-utility.html">
+  <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body class="project-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">2202 Labs</a>
+      <nav class="site-nav" aria-label="Project navigation">
+        <a href="../index.html">Home</a>
+        <a href="#problem">Problem</a>
+        <a href="#what-i-built">Build</a>
+        <a href="#workflow-overview">Workflow</a>
+        <a href="#what-i-learned">Learning</a>
+        <a href="#status">Status</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case-main">
+    <section class="section case-hero">
+      <div class="case-shell">
+        <p class="eyebrow">Independent Build</p>
+        <h1>Telegram Bot for Game Utility</h1>
+        <p class="case-subtitle">
+          A personal side project built around a game-related use case, and a practical way for me
+          to explore Docker, n8n, and Playwright by building something real and publicly usable
+          through Telegram.
+        </p>
+        <div class="case-meta" aria-label="Project metadata">
+          <span>Telegram</span>
+          <span>Docker</span>
+          <span>n8n</span>
+          <span>Playwright</span>
+          <span>Workflow automation</span>
+        </div>
+        <div class="button-row">
+          <a class="button button-primary" href="#workflow-overview">View Workflow</a>
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="problem">
+      <div class="case-shell">
+        <p class="eyebrow">Problem</p>
+        <h2>I wanted something more useful than a demo project sitting on my laptop.</h2>
+        <p>
+          This started as a personal side project for my own game-related use case. I wanted to
+          build something that was actually useful to me, not just a throwaway demo. As the project
+          evolved, it also became a practical way for me to explore Docker, n8n, and Playwright in
+          a more hands-on way.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="context">
+      <div class="case-shell">
+        <p class="eyebrow">Context</p>
+        <h2>The idea was to make a game-related workflow easier to access through Telegram.</h2>
+        <p>
+          I like building around problems that I personally understand. In this case, the project
+          came from my own interest in gaming and the idea of making that workflow more convenient
+          through a Telegram bot. I also wanted a side project that would push me to learn tools I
+          do not normally use in my day-to-day work.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="what-i-built">
+      <div class="case-shell">
+        <p class="eyebrow">What I Built</p>
+        <h2>A Telegram-based workflow that connects messaging, automation, and browser-driven actions.</h2>
+        <p>
+          The bot is designed to let users interact with a game-related workflow through Telegram.
+          Since it is publicly accessible, people can try it directly instead of just reading about
+          it. That was important to me because I wanted the project to feel real and usable, not
+          just theoretical.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="approach">
+      <div class="case-shell">
+        <p class="eyebrow">Technical Approach</p>
+        <h2>Telegram handles the interface, n8n handles the workflow, and Playwright handles browser-based steps.</h2>
+        <p>
+          I used Telegram as the user-facing entry point, n8n to connect and automate the workflow,
+          and Playwright where browser interaction was needed. I also packaged the setup with
+          Docker so it would be easier to run, restart, and move between environments without
+          repeatedly dealing with local dependency issues.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="workflow-overview">
+      <div class="case-shell">
+        <p class="eyebrow">Workflow Overview</p>
+        <h2>A simple view of how the bot works from user request to response.</h2>
+        <p>
+          A user sends a request through Telegram. The request is picked up by the workflow in n8n,
+          which handles the logic and decides what action to take. Where browser interaction is
+          needed, Playwright is used to automate that step. The result is then passed back through
+          the workflow and returned to the user in Telegram. The whole setup is packaged with
+          Docker so it is easier to run and manage consistently.
+        </p>
+        <figure class="case-table-wrap case-workflow-figure">
+          <img
+            src="../assets/images/telegram-bot-workflow.svg"
+            alt="High-level workflow for the Telegram bot showing Telegram input, n8n workflow handling, Playwright browser automation, Telegram response, and Docker as the surrounding runtime layer."
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-section" id="what-i-learned">
+      <div class="case-shell">
+        <p class="eyebrow">What I Learned</p>
+        <h2>The project helped me learn by connecting tools I do not normally use together in one build.</h2>
+        <p>
+          This project gave me hands-on exposure to tools that sit slightly outside my usual work
+          scope.
+        </p>
+        <p>
+          <strong>With Docker,</strong> I got practical experience packaging an application so it
+          runs in a cleaner and more consistent way. It made me think more about dependencies,
+          startup flow, environment variables, and how to make a project easier to redeploy.
+        </p>
+        <p>
+          <strong>With n8n,</strong> I got a better feel for how workflow automation can be
+          stitched together more visually and quickly. It was useful for understanding how to
+          connect steps and reduce unnecessary glue code where that made sense.
+        </p>
+        <p>
+          <strong>With Playwright,</strong> I learned more about handling browser-based
+          interactions programmatically. That gave me a better appreciation of where browser
+          automation fits into a real workflow and the kinds of edge cases that come with it.
+        </p>
+        <p>
+          What I like about this project is that it was not just about getting the bot to work. It
+          was also about learning how these pieces fit together in a practical build.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="why-included">
+      <div class="case-shell">
+        <p class="eyebrow">Why I Included It Here</p>
+        <h2>I included it because it shows a more exploratory side of how I like to build.</h2>
+        <p>
+          Most of my day-to-day experience is in enterprise infrastructure, security operations,
+          platform support, and automation. I included this project because it shows my willingness
+          to explore adjacent tools on my own, build something end to end, and learn by making
+          something real and usable.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="status">
+      <div class="case-shell">
+        <p class="eyebrow">Status</p>
+        <h2>The project is live as a personal build and still open to refinement.</h2>
+        <p>
+          This remains a personal project that I can continue refining over time. The value for me
+          is not just in the current bot, but in the practical learning that came from building and
+          packaging it with tools I wanted to understand better.
+        </p>
+        <p><strong>Personal project and active independent build</strong></p>
+      </div>
+    </section>
+
+    <section class="case-section" id="next-improvements">
+      <div class="case-shell">
+        <p class="eyebrow">Next Improvements</p>
+        <h2>Further work is focused on making the workflow simpler and easier to maintain.</h2>
+        <ul class="case-list">
+          <li>Improve response handling and user feedback flow</li>
+          <li>Refine workflow steps inside n8n</li>
+          <li>Tighten error handling around browser-driven steps</li>
+          <li>Continue simplifying setup and maintenance</li>
+        </ul>
+        <div class="case-footer-links">
+          <a class="button button-secondary" href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="case-shell footer-shell">
+      <p>2202 Labs</p>
+      <p>&copy; 2026 Gabriel Wu</p>
+    </div>
+  </footer>
+</body>
+</html>
