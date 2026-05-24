@@ -47,7 +47,7 @@
           one.
         </p>
         <p class="case-intro">
-          Working tool used/tested in realistic Splunk operations workflow.
+          Functional operational utility built around realistic Splunk report recovery workflows.
         </p>
         <div class="case-meta" aria-label="Project metadata">
           <span>Python</span>
@@ -144,6 +144,29 @@
       </div>
     </section>
 
+    <section class="case-section" id="before-after">
+      <div class="case-shell">
+        <p class="eyebrow">Before And After</p>
+        <h2>The tool turns repeated manual report recovery into a reviewed batch workflow.</h2>
+        <div class="case-transition">
+          <div class="case-block">
+            <h3>Before</h3>
+            <p>
+              Operators had to locate each saved search, confirm the time range, run the report,
+              wait, check evidence, and repeat the same steps for every report or slice.
+            </p>
+          </div>
+          <div class="case-block">
+            <h3>After</h3>
+            <p>
+              Operators can select the reports, review the batch, dispatch the work, check
+              available evidence, and use the batch summary for follow-up.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="case-section" id="design-choices">
       <div class="case-shell">
         <p class="eyebrow">Operational Design Choices</p>
@@ -161,6 +184,12 @@
           The tool also supports date slicing, so larger regeneration windows can be broken into
           daily, weekly, monthly, or custom slices instead of being treated as one large opaque
           request.
+        </p>
+        <p>
+          In plain terms, the tool uses a careful one-at-a-time pattern for small batches and a
+          dispatch-then-check pattern for larger batches. This is the same Bus vs Plane execution
+          model described in the technical write-up, presented here as an operational tradeoff
+          rather than an implementation deep dive.
         </p>
       </div>
     </section>
@@ -200,6 +229,19 @@
           Public proof is limited to safe material such as the GitHub repository, architecture
           diagram, sanitized UI screenshots, fake Splunk configuration examples, and dummy-report
           demo workflows.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="visual-proof">
+      <div class="case-shell">
+        <p class="eyebrow">Visual Proof To Add</p>
+        <h2>Sanitized screenshots should show the workflow without exposing environment details.</h2>
+        <p>
+          Future public screenshots should focus on safe proof points: report selection, batch
+          review, dispatch progress, post-dispatch checking, and acknowledgment summary output.
+          Screenshots should stay sanitized and avoid real report names, recipients, hostnames,
+          credentials, internal logs, and environment-specific identifiers.
         </p>
       </div>
     </section>
