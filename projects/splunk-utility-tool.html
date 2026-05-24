@@ -6,10 +6,10 @@
   <title>Splunk Utility Tool 4.0 | 2202 Labs</title>
   <meta
     name="description"
-    content="Python-based operational tooling for Splunk workflow orchestration, segmented job dispatch, and managed report execution, designed to improve reliability and reduce manual effort."
+    content="Controlled Splunk report regeneration and recovery workflow for saved searches, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling."
   >
   <meta property="og:title" content="Splunk Utility Tool 4.0 | 2202 Labs">
-  <meta property="og:description" content="Python-based operational tooling for Splunk workflow orchestration, segmented job dispatch, and managed report execution, designed to improve reliability and reduce manual effort.">
+  <meta property="og:description" content="Controlled Splunk report regeneration and recovery workflow for saved searches, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/splunk-utility-tool.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -23,9 +23,10 @@
       <nav class="site-nav" aria-label="Project navigation">
         <a href="../index.html">Home</a>
         <a href="#problem">Problem</a>
-        <a href="#approach">Approach</a>
-        <a href="#design-goals">Goals</a>
-        <a href="#next-improvements">Next</a>
+        <a href="#tool">Tool</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#impact">Impact</a>
+        <a href="#demonstrates">Demonstrates</a>
       </nav>
     </div>
   </header>
@@ -33,86 +34,105 @@
   <main class="case-main">
     <section class="section case-hero">
       <div class="case-shell">
-        <p class="eyebrow">Featured Project</p>
+        <p class="eyebrow">Portfolio Project</p>
         <h1>Splunk Utility Tool 4.0</h1>
         <p class="case-subtitle">
-          Python-based operational tooling for Splunk workflow orchestration, segmented job
-          dispatch, and managed report execution, designed to improve reliability and reduce manual
-          effort.
+          Controlled Splunk report regeneration and recovery workflow for saved searches
+        </p>
+        <p class="case-intro">
+          Splunk Utility Tool 4.0 is a Python/Tkinter desktop utility built to help Splunk
+          operators regenerate saved reports through a controlled workflow. It was designed around
+          a real SIEM operations problem: when scheduled reports are missed, operators should not
+          have to manually locate, rerun, check, and resend each report through Splunk Web one by
+          one.
+        </p>
+        <p class="case-intro">
+          Working tool used/tested in realistic Splunk operations workflow.
         </p>
         <div class="case-meta" aria-label="Project metadata">
           <span>Python</span>
-          <span>Splunk</span>
-          <span>Workflow automation</span>
-          <span>Operational tooling</span>
+          <span>Tkinter</span>
+          <span>Splunk Management API</span>
+          <span>SIEM operations</span>
+          <span>Windows desktop</span>
         </div>
         <div class="button-row">
-          <a class="button button-primary" href="#approach">View Approach</a>
-          <a class="button button-secondary" href="../index.html">Back to Home</a>
+          <a class="button button-primary" href="#workflow">View Workflow</a>
+          <a class="button button-secondary" href="#implementation-notes">Technical Notes</a>
         </div>
       </div>
     </section>
 
     <section class="case-section" id="problem">
       <div class="case-shell">
-        <p class="eyebrow">Problem</p>
-        <h2>Recurring Splunk workflows become harder to manage when execution is ad hoc.</h2>
+        <p class="eyebrow">Problem Solved</p>
+        <h2>Missed scheduled reports can turn into repetitive manual recovery work.</h2>
         <p>
-          Operational Splunk workflows often involve repetitive manual steps, coordination across
-          multiple tasks, and inconsistent execution when processes are handled in an ad hoc way.
-          This increases manual effort, raises execution risk, and makes recurring support work
-          harder to manage consistently.
+          In Splunk operations, scheduled reports are normally handled by Splunk's scheduler. The
+          challenge starts when users report that reports were missed, or when a recovery scenario
+          requires many reports to be regenerated.
+        </p>
+        <p>
+          Before this tool, the process required an operator to open Splunk Web, locate the correct
+          saved search, confirm the time range, run the report, wait for completion, check delivery
+          evidence, and repeat the same steps for every report or time slice.
+        </p>
+        <p>
+          For small requests, this was repetitive. For larger recovery scenarios involving many
+          scheduled reports, it could become a long manual process with weak traceability.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="context">
+    <section class="case-section" id="tool">
       <div class="case-shell">
-        <p class="eyebrow">Context</p>
-        <h2>The aim was to make repeatable support work more structured and supportable.</h2>
+        <p class="eyebrow">What The Tool Does</p>
+        <h2>A client-side orchestration layer over Splunk saved-report regeneration workflows.</h2>
         <p>
-          This project was built to explore a more structured and supportable approach to
-          Splunk-related operational workflows. The aim was to improve how repeatable tasks are
-          triggered, controlled, and maintained, while keeping the design practical for real-world
-          support and operational use.
+          The tool supports report selection, multi-app batching, date slicing, dispatch,
+          post-dispatch checking, reconciliation, batch ID tracking, and acknowledgment summaries.
         </p>
+        <div class="case-transition">
+          <div class="case-block">
+            <h3>Select</h3>
+            <p>Select reports by Splunk app and search across multiple apps.</p>
+          </div>
+          <div class="case-block">
+            <h3>Slice</h3>
+            <p>Choose daily, weekly, monthly, or custom regeneration ranges.</p>
+          </div>
+          <div class="case-block">
+            <h3>Review</h3>
+            <p>Review the full batch before dispatch so the operator can confirm scope.</p>
+          </div>
+          <div class="case-block">
+            <h3>Dispatch</h3>
+            <p>Dispatch reports or report slices through Splunk saved-search workflows.</p>
+          </div>
+          <div class="case-block">
+            <h3>Check</h3>
+            <p>Check available Splunk/tool evidence after dispatch.</p>
+          </div>
+          <div class="case-block">
+            <h3>Summarize</h3>
+            <p>Reconcile uncertain results where possible and produce an acknowledgment summary.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="case-section" id="what-i-built">
+    <section class="case-section" id="workflow">
       <div class="case-shell">
-        <p class="eyebrow">What I Built</p>
-        <h2>A utility framework focused on control, repeatability, and maintainability.</h2>
+        <p class="eyebrow">Check And Dispatch Workflow</p>
+        <h2>The strongest part of the tool is that it does not treat dispatch submitted as success.</h2>
         <p>
-          I designed a Python-based utility framework to support workflow orchestration, segmented
-          job dispatch, and managed execution of recurring operational tasks. The design focuses on
-          improving control, repeatability, and maintainability for day-to-day Splunk support
-          activities.
+          A Splunk dispatch request can be accepted before the report is actually delivered. A
+          timeout also does not always mean the report failed. To handle this, the tool separates
+          dispatch submission from final outcome.
         </p>
-      </div>
-    </section>
-
-    <section class="case-section" id="approach">
-      <div class="case-shell">
-        <p class="eyebrow">Technical Approach</p>
-        <h2>Workflow logic and task execution are separated to improve extensibility.</h2>
         <p>
-          The solution is structured around modular task handling, controlled execution flow, and
-          clearer separation between workflow logic and task execution. This makes it easier to
-          extend for new use cases, troubleshoot when needed, and adapt for different operational
-          scenarios without redesigning the entire workflow.
-        </p>
-      </div>
-    </section>
-
-    <section class="case-section" id="workflow-overview">
-      <div class="case-shell">
-        <p class="eyebrow">Workflow Overview</p>
-        <h2>A high-level flow makes the operating model easier to understand.</h2>
-        <p>
-          This high-level workflow shows how the utility moves from operator input through
-          controlled execution and output handling. It is intentionally simplified to illustrate
-          the operational structure without exposing internal implementation detail.
+          It checks available evidence, reconciles uncertain results where possible, and summarizes
+          the final batch result for follow-up.
         </p>
         <figure class="case-table-wrap case-workflow-figure">
           <img
@@ -124,78 +144,135 @@
       </div>
     </section>
 
-    <section class="case-section" id="why-it-matters">
+    <section class="case-section" id="design-choices">
       <div class="case-shell">
-        <p class="eyebrow">Why It Matters</p>
-        <h2>The point is operational consistency, not automation for its own sake.</h2>
+        <p class="eyebrow">Operational Design Choices</p>
+        <h2>The workflow changes behavior based on the size and shape of the request.</h2>
         <p>
-          The value of the tool is not just automation for its own sake. It is about reducing
-          repetitive manual handling, improving operational consistency, and making recurring
-          workflows easier to run, support, and maintain over time.
+          The tool uses different execution patterns depending on batch size. For smaller batches,
+          it uses a deliberate check-after-each-dispatch approach. This is safer when the request
+          only contains a few reports.
+        </p>
+        <p>
+          For larger batches, it dispatches the selected reports or slices first, then verifies them
+          afterward. This avoids unnecessary operator waiting time during larger recovery scenarios.
+        </p>
+        <p>
+          The tool also supports date slicing, so larger regeneration windows can be broken into
+          daily, weekly, monthly, or custom slices instead of being treated as one large opaque
+          request.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="design-goals">
+    <section class="case-section" id="impact">
       <div class="case-shell">
-        <p class="eyebrow">Key Design Goals</p>
-        <h2>Operational structure should reduce effort and improve long-term supportability.</h2>
-        <ul class="case-list">
-          <li>Reduce manual effort in recurring workflows</li>
-          <li>Improve reliability through structured execution</li>
-          <li>Support clearer control over task dispatch and flow</li>
-          <li>Make the solution easier to maintain and extend</li>
-          <li>Improve long-term operational supportability</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="case-section" id="technologies">
-      <div class="case-shell">
-        <p class="eyebrow">Technologies</p>
-        <h2>Implementation stays focused on practical operations tooling.</h2>
-        <p>Python, Splunk, workflow automation, operational tooling</p>
-      </div>
-    </section>
-
-    <section class="case-section" id="status">
-      <div class="case-shell">
-        <p class="eyebrow">Status</p>
-        <h2>The work remains part of active independent portfolio development.</h2>
-        <p>Independent project and active portfolio work</p>
-      </div>
-    </section>
-
-    <section class="case-section" id="technical-documentation">
-      <div class="case-shell">
-        <p class="eyebrow">Technical Documentation</p>
-        <h2>A deeper engineering write-up is available in the project repository.</h2>
+        <p class="eyebrow">Estimated Operational Impact</p>
+        <h2>The value is reduced operator handling time and better post-dispatch visibility.</h2>
         <p>
-          The portfolio overview summarizes the project at a high level. A deeper engineering
-          write-up is available in the project repository, covering dispatch workflow, validation
-          coverage, safety controls, and implementation boundaries.
+          These are operational estimates based on the manual steps involved, not formal benchmark
+          results.
         </p>
-        <div class="button-row">
-          <a
-            class="button button-secondary"
-            href="https://github.com/skyredt/splunk-utility-tool/blob/main/docs/technical-implementation.md"
-            target="_blank"
-            rel="noreferrer"
-          >Read the technical implementation notes</a>
-        </div>
+        <dl class="case-definition-list">
+          <div class="case-definition">
+            <dt>Normal resend request involving 4 to 10 reports</dt>
+            <dd>Manual Splunk Web process: around 30 minutes.</dd>
+            <dd>With tool: around 5 minutes when reports complete normally.</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Larger recovery scenario involving hundreds of scheduled reports</dt>
+            <dd>Manual process: 1 to 2 days.</dd>
+            <dd>With tool: under 30 minutes operator handling time.</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <section class="case-section" id="next-improvements">
+    <section class="case-section" id="security">
       <div class="case-shell">
-        <p class="eyebrow">Next Improvements</p>
-        <h2>Further work is focused on visibility, modularity, and operator usability.</h2>
-        <ul class="case-list">
-          <li>Add clearer run-state visibility and execution logging</li>
-          <li>Expand modular task support for additional workflows</li>
-          <li>Introduce more structured reporting for completed jobs</li>
-          <li>Improve operator usability and support documentation</li>
-        </ul>
+        <p class="eyebrow">Security-Conscious Public Presentation</p>
+        <h2>The public portfolio page and repository are intentionally sanitized.</h2>
+        <p>
+          They do not expose internal Splunk hostnames, report names, recipients, credentials,
+          internal logs, real batch IDs, or environment-specific screenshots.
+        </p>
+        <p>
+          Public proof is limited to safe material such as the GitHub repository, architecture
+          diagram, sanitized UI screenshots, fake Splunk configuration examples, and dummy-report
+          demo workflows.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="tech-stack">
+      <div class="case-shell">
+        <p class="eyebrow">Tech Stack</p>
+        <h2>A compact desktop operations tool built around Splunk REST workflows.</h2>
+        <dl class="case-definition-list">
+          <div class="case-definition">
+            <dt>Language</dt>
+            <dd>Python</dd>
+          </div>
+          <div class="case-definition">
+            <dt>UI</dt>
+            <dd>Tkinter</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Platform</dt>
+            <dd>Windows desktop</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Splunk integration</dt>
+            <dd>Splunk Management API</dd>
+          </div>
+          <div class="case-definition">
+            <dt>API layer</dt>
+            <dd>Requests / Splunk REST calls</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Packaging</dt>
+            <dd>PyInstaller</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Verification</dt>
+            <dd>Native Splunk evidence, optional MergeReport evidence</dd>
+          </div>
+          <div class="case-definition">
+            <dt>Security posture</dt>
+            <dd>Sanitized public repo with fake configuration examples</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="case-section" id="demonstrates">
+      <div class="case-shell">
+        <p class="eyebrow">What This Demonstrates</p>
+        <h2>Practical Splunk administration beyond writing SPL.</h2>
+        <p>
+          This project demonstrates practical Splunk administration beyond writing SPL. It shows
+          hands-on experience with saved-search workflows, app scoping, dispatch behavior, search
+          jobs, SID tracking, scheduler/email awareness, post-dispatch verification, and
+          operational recovery handling.
+        </p>
+        <p>
+          It also demonstrates Python desktop automation, API integration, reliability-minded
+          workflow design, and security-conscious public presentation.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section" id="implementation-notes">
+      <div class="case-shell">
+        <p class="eyebrow">Technical Implementation Notes</p>
+        <h2>The detailed implementation write-up belongs in the tool repository.</h2>
+        <p>
+          The technical write-up covers the dispatch workflow, broker/session isolation, slicing
+          model, verification logic, and public-safe implementation details.
+        </p>
+        <p>
+          <a href="https://github.com/skyredt/splunk-utility-tool/blob/main/docs/technical-implementation.md">Read the technical write-up</a>
+        </p>
         <div class="case-footer-links">
           <a class="button button-secondary" href="../index.html">Back to Home</a>
         </div>
