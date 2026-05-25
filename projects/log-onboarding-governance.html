@@ -45,6 +45,10 @@
           not just ingestion, but making sure onboarded data could be retained appropriately,
           understood by operators, and used reliably over time.
         </p>
+        <p class="case-intro">
+          The public version is intentionally generalized and sanitized to avoid exposing internal
+          systems, sensitive source names, or environment-specific security details.
+        </p>
         <div class="case-meta" aria-label="Project metadata">
           <span>Splunk</span>
           <span>Log onboarding</span>
@@ -93,6 +97,14 @@
           cases were applicable, what logs or fields were required, and whether the resulting data
           would support meaningful reporting, monitoring, and review outcomes.
         </p>
+        <ul class="case-list">
+          <li>Identity events</li>
+          <li>Privileged access</li>
+          <li>Configuration change</li>
+          <li>Account lifecycle</li>
+          <li>Audit-trail integrity</li>
+          <li>Authentication anomalies</li>
+        </ul>
       </div>
     </section>
 
@@ -102,11 +114,9 @@
         <h2>Onboarding work starts with requirements and ends with supportable data.</h2>
         <p>
           In practice, log onboarding required more than configuring inputs. The work involved
-          engaging stakeholders, understanding why the data mattered, identifying the right sources,
-          aligning onboarding decisions with operational, monitoring, and retention needs, and
-          facilitating with users to identify logs that matched the required use cases. That also
-          included helping determine which events, fields, and keywords were relevant, and advising
-          use-case simulation on the relevant platform when users were unsure what logs to provide.
+          engaging stakeholders, identifying the right sources, aligning onboarding decisions with
+          operational, monitoring, and retention needs, and helping users validate whether the logs
+          supported the required use cases.
         </p>
         <ul class="case-list">
           <li>Engaging stakeholders to understand logging requirements</li>
