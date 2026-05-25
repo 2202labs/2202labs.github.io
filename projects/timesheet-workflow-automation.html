@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timesheet Workflow Automation | 2202 Labs</title>
+  <title>Python Timesheet Reconciliation Tool | 2202 Labs</title>
   <meta
     name="description"
-    content="A workflow automation project focused on improving timesheet submission, approval, and reporting through better process structure, validation, and operational flow design."
+    content="An offline Python desktop prototype for timesheet reconciliation, discrepancy review, audit-friendly admin overrides, and monthly PDF reporting."
   >
-  <meta property="og:title" content="Timesheet Workflow Automation | 2202 Labs">
-  <meta property="og:description" content="A workflow automation project focused on improving timesheet submission, approval, and reporting through better process structure, validation, and operational flow design.">
+  <meta property="og:title" content="Python Timesheet Reconciliation Tool | 2202 Labs">
+  <meta property="og:description" content="An offline Python desktop prototype for timesheet reconciliation, discrepancy review, audit-friendly admin overrides, and monthly PDF reporting.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/timesheet-workflow-automation.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -23,9 +23,10 @@
       <nav class="site-nav" aria-label="Project navigation">
         <a href="../index.html">Home</a>
         <a href="#problem">Problem</a>
-        <a href="#workflow-focus">Workflow</a>
-        <a href="#why-it-matters">Why It Matters</a>
-        <a href="#next-improvements">Next</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#design">Design</a>
+        <a href="#status">Status</a>
       </nav>
     </div>
   </header>
@@ -33,20 +34,26 @@
   <main class="case-main">
     <section class="section case-hero">
       <div class="case-shell">
-        <p class="eyebrow">Active Build / Design Case Study</p>
-        <h1>Timesheet Workflow Automation</h1>
+        <p class="eyebrow">Active Prototype / Operational Design Case Study</p>
+        <h1>Python Timesheet Reconciliation Tool</h1>
         <p class="case-subtitle">
-          A workflow automation project focused on improving timesheet submission, approval, and
-          reporting through better process structure, validation, and operational flow design.
+          An offline Python desktop tool for turning attendance events, leave/off-day context,
+          admin review, and monthly reporting into a controlled reconciliation workflow.
+        </p>
+        <p class="case-intro">
+          The project is intentionally local-first. It is designed for operational environments
+          where internet access, cloud services, or SSO cannot be assumed, and where timesheet
+          records still need to be reviewable, explainable, and exportable.
         </p>
         <div class="case-meta" aria-label="Project metadata">
-          <span>Python</span>
-          <span>Workflow automation</span>
-          <span>Approval handling</span>
-          <span>Reporting flow</span>
+          <span>Python desktop application</span>
+          <span>Offline-first workflow</span>
+          <span>Local persistence</span>
+          <span>Attendance reconciliation</span>
+          <span>PDF reporting</span>
         </div>
         <div class="button-row">
-          <a class="button button-primary" href="#workflow-focus">View Workflow</a>
+          <a class="button button-primary" href="#workflow">View Workflow</a>
           <a class="button button-secondary" href="../index.html">Back to Home</a>
         </div>
       </div>
@@ -55,104 +62,201 @@
     <section class="case-section" id="problem">
       <div class="case-shell">
         <p class="eyebrow">Problem</p>
-        <h2>Manual and disconnected handling creates avoidable effort across the full process.</h2>
+        <h2>Timesheet reconciliation breaks down when attendance, exceptions, and reporting live in separate manual steps.</h2>
         <p>
-          Timesheet handling often becomes harder than it needs to be when submission, review,
-          approval, and reporting are spread across manual steps or disconnected tools. In
-          practice, this creates repetitive effort, inconsistent handling, avoidable follow-up,
-          and limited visibility for both end users and reviewers.
+          Manual reconciliation becomes slow and inconsistent when attendance records are reviewed
+          separately from missing entries, leave/off-day classification, admin decisions, and
+          monthly reporting. A single incomplete day can require follow-up across multiple places:
+          raw attendance notes, staff schedule context, leave records, reviewer comments, and the
+          final report that management expects at month end.
+        </p>
+        <p>
+          The tool treats this as an operational control problem, not just a data-entry problem.
+          The important work is to preserve raw events, derive daily records consistently, surface
+          discrepancies clearly, require reasoned admin action, and produce a repeatable report
+          output without relying on cloud infrastructure.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="context">
+    <section class="case-section" id="offline-design">
       <div class="case-shell">
-        <p class="eyebrow">Context</p>
-        <h2>The goal is to redesign the workflow, not just swap out the current tooling.</h2>
+        <p class="eyebrow">Offline Design</p>
+        <h2>Local operation matters when connectivity and identity services are not guaranteed.</h2>
         <p>
-          This work is based on a real operational pain point experienced from the end-user side
-          of an internal timesheet process that currently depends heavily on Excel, VBA, and
-          manual handling. The goal is not just to replace one tool with another, but to redesign
-          the workflow so that submission, approval, and downstream reporting become more
-          structured, traceable, and easier to operate.
+          This prototype is designed as an offline desktop application because some operating
+          environments cannot assume internet access, hosted workflow platforms, cloud storage, or
+          central SSO. The application keeps the reconciliation workflow close to the operator and
+          relies on local persistence so work can continue in a controlled environment.
+        </p>
+        <p>
+          Attendance capture in the prototype can be represented through manual or simulated
+          entries. A production direction could involve staff pass or RFID-style tap-in/tap-out
+          events, but the portfolio positioning here is limited to the offline workflow design and
+          active prototype.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="what-i-built">
+    <section class="case-section" id="workflow">
       <div class="case-shell">
-        <p class="eyebrow">What I Built</p>
-        <h2>A Python-based workflow tool focused on how timesheet data moves through the process.</h2>
+        <p class="eyebrow">Workflow</p>
+        <h2>The workflow moves from raw attendance events to reviewed monthly output.</h2>
         <p>
-          I worked on building a Python-based workflow tool that focuses on how timesheet data
-          moves through the full process: user submission, reviewer validation, approval handling,
-          status visibility, and reporting preparation. The emphasis is on improving workflow
-          structure and reducing manual friction rather than building a feature-heavy application.
+          The core flow is designed to keep raw inputs, derived records, exceptions, and final
+          exports separate enough that each step can be reviewed.
         </p>
+        <ol class="case-flow">
+          <li><strong>Attendance capture:</strong> record manual or simulated tap-in/tap-out style events for each day.</li>
+          <li><strong>Daily record derivation:</strong> pair attendance events into sessions and derive expected daily timesheet records.</li>
+          <li><strong>Discrepancy detection:</strong> flag missing entries, incomplete pairs, unexpected duration, and days needing classification.</li>
+          <li><strong>Admin review:</strong> present exceptions for review instead of silently normalizing them.</li>
+          <li><strong>Override with reason:</strong> allow controlled correction, classification, or approval with an explanation.</li>
+          <li><strong>Monthly consolidation:</strong> combine reviewed daily records into a month-level timesheet view.</li>
+          <li><strong>PDF export:</strong> generate a report-oriented output that can act as the monthly system-of-record artifact.</li>
+        </ol>
       </div>
     </section>
 
-    <section class="case-section" id="workflow-focus">
+    <section class="case-section" id="capabilities">
       <div class="case-shell">
-        <p class="eyebrow">Workflow Focus</p>
-        <h2>The work is centered on a few practical operational questions.</h2>
+        <p class="eyebrow">Key Capabilities</p>
+        <h2>The feature set is focused on reconciliation, review, and repeatable reporting.</h2>
         <ul class="case-list">
-          <li>How can submission be made simpler and less error-prone for end users?</li>
-          <li>How can approval handling become more structured and visible?</li>
-          <li>How can downstream reporting become easier to prepare and review?</li>
-          <li>How can the workflow reduce repetitive manual coordination without becoming harder to maintain?</li>
+          <li><strong>Offline-first desktop workflow</strong> for controlled operational use without a cloud dependency.</li>
+          <li><strong>Local persistence model</strong> for raw attendance events, derived daily records, review status, and report data.</li>
+          <li><strong>Attendance pairing and session logic</strong> to turn tap-in/tap-out style events into usable work sessions.</li>
+          <li><strong>Discrepancy detection</strong> for missing events, incomplete pairs, unclear work days, and records requiring admin review.</li>
+          <li><strong>Leave and off-day classification</strong> so legitimate non-working days are handled separately from unresolved attendance gaps.</li>
+          <li><strong>Admin override with reason</strong> to keep exceptions explicit instead of hidden inside edited totals.</li>
+          <li><strong>Audit-friendly history</strong> for review decisions, override reasons, and corrected records.</li>
+          <li><strong>Monthly consolidation</strong> that rolls reviewed daily records into a management-ready reporting period.</li>
+          <li><strong>PDF report output</strong> to support repeatable month-end submission and archival.</li>
+          <li><strong>Management summary views</strong> for reviewing exception counts, completion status, and monthly totals.</li>
         </ul>
       </div>
     </section>
 
-    <section class="case-section" id="design-direction">
+    <section class="case-section" id="review-surfaces">
       <div class="case-shell">
-        <p class="eyebrow">Design Direction</p>
-        <h2>The implementation treats the problem as workflow and state management.</h2>
+        <p class="eyebrow">Visual Proof Direction</p>
+        <h2>Public screenshots should prove the workflow without exposing operational data.</h2>
         <p>
-          The implementation treats the problem primarily as a workflow and state-management
-          challenge rather than only a form-entry problem. That means focusing on cleaner
-          handoffs, clearer status visibility, validation at the right stages, and automation
-          where it improves reliability and reduces manual effort.
+          No real staff names, badge IDs, company names, internal policies, or personal data are
+          needed to explain the tool. Future visual proof can use sanitized placeholder records
+          that demonstrate the operating flow.
         </p>
+        <div class="case-transition" aria-label="Potential sanitized screen concepts">
+          <article class="case-block">
+            <h3>Daily Attendance Review</h3>
+            <p>Show paired sessions, missing entries, leave/off-day status, and records awaiting review.</p>
+          </article>
+          <article class="case-block">
+            <h3>Discrepancy Resolution</h3>
+            <p>Show an exception queue where an admin selects a classification or override reason.</p>
+          </article>
+          <article class="case-block">
+            <h3>Monthly Export Summary</h3>
+            <p>Show reviewed totals, unresolved exceptions, and the PDF export action for the reporting period.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="design">
+      <div class="case-shell">
+        <p class="eyebrow">Engineering Design Choices</p>
+        <h2>The credibility of the tool comes from how records and exceptions are modeled.</h2>
+        <dl class="case-definition-list">
+          <div class="case-definition">
+            <dt>Local-first architecture</dt>
+            <dd>
+              The workflow is designed to run on a desktop with local data storage, avoiding a
+              hard dependency on internet access or external identity services.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Deterministic reconciliation rules</dt>
+            <dd>
+              Attendance events are converted into daily records through repeatable rules so the
+              same inputs produce the same review outcome.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Raw events separated from derived records</dt>
+            <dd>
+              Captured attendance events are treated as source inputs, while daily timesheet
+              records are derived outputs that can be reviewed, explained, and corrected.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Reviewable discrepancy handling</dt>
+            <dd>
+              Missing tap-style events, incomplete sessions, and classification gaps are surfaced
+              for admin action instead of being quietly folded into the final totals.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Audit-friendly override logging</dt>
+            <dd>
+              Overrides are modeled as decisions with reasons, which preserves accountability and
+              makes later review easier than editing a final number in place.
+            </dd>
+          </div>
+          <div class="case-definition">
+            <dt>Export-focused reporting</dt>
+            <dd>
+              Monthly PDF output is treated as a first-class deliverable because the value of the
+              tool depends on producing a repeatable report that can be reviewed and archived.
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
 
     <section class="case-section" id="why-it-matters">
       <div class="case-shell">
         <p class="eyebrow">Why It Matters</p>
-        <h2>A better timesheet process improves accuracy, tracking, and day-to-day usability.</h2>
+        <h2>A better reconciliation workflow reduces effort while preserving accountability.</h2>
         <p>
-          A better timesheet process is not just about convenience. It improves accuracy, reduces
-          avoidable administrative effort, makes review and approval easier to track, and creates
-          a more usable operational flow for the people involved in the process day to day.
+          The practical value is consistency. Admin users should not have to reconstruct the same
+          missing-entry story every month from notes, spreadsheets, and memory. A structured
+          reconciliation tool reduces manual effort, makes exceptions reviewable, keeps override
+          decisions accountable, and supports repeatable monthly reporting.
+        </p>
+        <p>
+          The offline design also matters because some restricted environments need useful tools
+          that do not assume modern SaaS conveniences. This project shows how operational
+          automation can still be designed with clear rules, review stages, and exportable evidence
+          when the deployment model is intentionally local.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="current-status">
+    <section class="case-section" id="demonstrates">
       <div class="case-shell">
-        <p class="eyebrow">Current Status</p>
-        <h2>This is an active build and design case study with room to mature.</h2>
+        <p class="eyebrow">What This Demonstrates</p>
+        <h2>The project extends the portfolio beyond Splunk into broader operational tooling.</h2>
         <p>
-          The current value lies in the workflow structure, operating flow, and automation thinking
-          behind the tool. It is included as a design case study with room to continue refining
-          validation, reporting, status handling, and user experience.
+          The timesheet tool demonstrates workflow state modeling, data reconciliation,
+          offline application design, audit-friendly admin tooling, and reporting/export
+          generation. Those are the same kinds of engineering concerns that matter in platform
+          operations: clear inputs, repeatable rules, controlled exception handling, and outputs
+          that other people can trust.
         </p>
       </div>
     </section>
 
-    <section class="case-section" id="next-improvements">
+    <section class="case-section" id="status">
       <div class="case-shell">
-        <p class="eyebrow">Next Improvements</p>
-        <h2>Further work is focused on clearer stages, validation, visibility, and maintainability.</h2>
-        <ul class="case-list">
-          <li>Refine the end-to-end workflow stages more explicitly</li>
-          <li>Define the validation and exception-handling paths more clearly</li>
-          <li>Improve status tracking for submitters and approvers</li>
-          <li>Clarify how reporting outputs should be generated from approved records</li>
-          <li>Keep the implementation simple enough to remain maintainable over time</li>
-        </ul>
+        <p class="eyebrow">Current Status / Next Steps</p>
+        <h2>This is an active build and operational design case study, not a production-proven deployment claim.</h2>
+        <p>
+          The current portfolio value is the design of the reconciliation workflow and the
+          direction of the Python desktop prototype. Next work should focus on tightening the
+          local data model, refining discrepancy rules, improving admin review screens, and adding
+          sanitized visual proof once representative demo records are ready.
+        </p>
         <div class="case-footer-links">
           <a class="button button-secondary" href="../index.html">Back to Home</a>
         </div>
