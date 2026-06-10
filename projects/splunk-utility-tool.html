@@ -6,10 +6,10 @@
   <title>Splunk Utility Tool 4.0 | 2202 Labs</title>
   <meta
     name="description"
-    content="Controlled Splunk report regeneration and recovery workflow for saved searches, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling."
+    content="Controlled Splunk saved-search regeneration and recovery workflow with custom and sliced dispatch planning, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling."
   >
   <meta property="og:title" content="Splunk Utility Tool 4.0 | 2202 Labs">
-  <meta property="og:description" content="Controlled Splunk report regeneration and recovery workflow for saved searches, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling.">
+  <meta property="og:description" content="Controlled Splunk saved-search regeneration and recovery workflow with custom and sliced dispatch planning, presented as a portfolio-safe overview of Python, Tkinter, and SIEM operations tooling.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/splunk-utility-tool.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -37,7 +37,8 @@
         <p class="eyebrow">Portfolio Project</p>
         <h1>Splunk Utility Tool 4.0</h1>
         <p class="case-subtitle">
-          Controlled Splunk report regeneration and recovery workflow for saved searches
+          Controlled Splunk saved-search regeneration with Custom single-window dispatch and
+          Daily/Weekly/Monthly sliced reruns
         </p>
         <p class="case-intro">
           Splunk Utility Tool 4.0 is a Python/Tkinter desktop utility built to help Splunk
@@ -99,11 +100,16 @@
           </div>
           <div class="case-block">
             <h3>Slice</h3>
-            <p>Choose daily, weekly, monthly, or custom regeneration ranges.</p>
+            <p>
+              Choose a single-window Custom dispatch or Daily, Weekly, and Monthly sliced
+              regeneration ranges.
+            </p>
           </div>
           <div class="case-block">
             <h3>Review</h3>
-            <p>Review the full batch before dispatch so the operator can confirm scope.</p>
+            <p>
+              Review the active time-range mode and total dispatch count before execution.
+            </p>
           </div>
           <div class="case-block">
             <h3>Dispatch</h3>
@@ -134,10 +140,17 @@
           It checks available evidence, reconciles uncertain results where possible, and summarizes
           the final batch result for follow-up.
         </p>
+        <p>
+          Pre-dispatch confirmation distinguishes Custom overrides, sliced Daily/Weekly/Monthly
+          reruns, and saved-search no-override mode. In no-override mode, the confirmation shows
+          the configured saved-search time range instead of disabled override fields. Epoch
+          earliest/latest values are rendered as human-readable SGT while raw Splunk values remain
+          visible for evidence.
+        </p>
         <figure class="case-table-wrap case-workflow-figure">
           <img
             src="../assets/images/splunk-utility-workflow.svg"
-            alt="High-level workflow for Splunk Utility Tool 4.0 showing input, validation, workflow selection, segmented job dispatch, task execution, status output, and operator review."
+            alt="High-level workflow for Splunk Utility Tool 4.0 showing input, validation, workflow selection, dispatch planning, task execution, status output, and operator review."
             loading="lazy"
           >
         </figure>
@@ -159,8 +172,9 @@
           <div class="case-block">
             <h3>After</h3>
             <p>
-              Operators can select the reports, review the batch, dispatch the work, check
-              available evidence, and use the batch summary for follow-up.
+              Operators can select the reports, review the active time-range mode and total
+              dispatch count, dispatch the work, check available evidence, and use the batch
+              summary for follow-up.
             </p>
           </div>
         </div>
@@ -182,8 +196,8 @@
         </p>
         <p>
           The tool also supports date slicing, so larger regeneration windows can be broken into
-          daily, weekly, monthly, or custom slices instead of being treated as one large opaque
-          request.
+          daily, weekly, or monthly slices. Custom mode is kept separate as a single-window
+          dispatch for fixed regeneration ranges.
         </p>
         <p>
           In plain terms, the tool uses a careful one-at-a-time pattern for small batches and a
@@ -311,6 +325,11 @@
         <p>
           The technical write-up covers the dispatch workflow, broker/session isolation, slicing
           model, verification logic, and public-safe implementation details.
+        </p>
+        <p>
+          A production-test build has been prepared from the current implementation work, but this
+          does not claim production deployment. The tool is a client-side operational aid and does
+          not replace Splunk's scheduler.
         </p>
         <p>
           <a href="https://github.com/skyredt/splunk-utility-tool/blob/main/docs/technical-implementation.md">Read the technical write-up</a>
