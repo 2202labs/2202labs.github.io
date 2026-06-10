@@ -6,10 +6,10 @@
   <title>Splunk Utility Tool 4.0 | 2202 Labs</title>
   <meta
     name="description"
-    content="Python-based operational tooling for Splunk workflow orchestration, segmented job dispatch, and managed report execution, designed to improve reliability and reduce manual effort."
+    content="Python-based operational tooling for controlled Splunk saved-search regeneration, custom and sliced dispatch planning, and managed report execution."
   >
   <meta property="og:title" content="Splunk Utility Tool 4.0 | 2202 Labs">
-  <meta property="og:description" content="Python-based operational tooling for Splunk workflow orchestration, segmented job dispatch, and managed report execution, designed to improve reliability and reduce manual effort.">
+  <meta property="og:description" content="Python-based operational tooling for controlled Splunk saved-search regeneration, custom and sliced dispatch planning, and managed report execution.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/splunk-utility-tool.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -36,9 +36,9 @@
         <p class="eyebrow">Featured Project</p>
         <h1>Splunk Utility Tool 4.0</h1>
         <p class="case-subtitle">
-          Python-based operational tooling for Splunk workflow orchestration, segmented job
-          dispatch, and managed report execution, designed to improve reliability and reduce manual
-          effort.
+          Python-based operational tooling for controlled Splunk saved-search regeneration,
+          custom and sliced dispatch planning, and managed report execution, designed to improve
+          reliability and reduce manual effort.
         </p>
         <div class="case-meta" aria-label="Project metadata">
           <span>Python</span>
@@ -84,10 +84,11 @@
         <p class="eyebrow">What I Built</p>
         <h2>A utility framework focused on control, repeatability, and maintainability.</h2>
         <p>
-          I designed a Python-based utility framework to support workflow orchestration, segmented
-          job dispatch, and managed execution of recurring operational tasks. The design focuses on
-          improving control, repeatability, and maintainability for day-to-day Splunk support
-          activities.
+          I designed a Python-based utility framework to support controlled Splunk saved-search
+          regeneration, managed dispatch planning, and reviewable execution of recurring
+          operational tasks. The design supports both single-window Custom dispatch and
+          Daily/Weekly/Monthly sliced regeneration, while keeping the operator's plan visible
+          before work is submitted.
         </p>
       </div>
     </section>
@@ -98,9 +99,10 @@
         <h2>Workflow logic and task execution are separated to improve extensibility.</h2>
         <p>
           The solution is structured around modular task handling, controlled execution flow, and
-          clearer separation between workflow logic and task execution. This makes it easier to
-          extend for new use cases, troubleshoot when needed, and adapt for different operational
-          scenarios without redesigning the entire workflow.
+          clearer separation between workflow logic and task execution. Pre-dispatch confirmation
+          shows the active time-range mode and total dispatch count, including whether the run uses
+          a Custom override, sliced Daily/Weekly/Monthly regeneration, or the saved search's own
+          configured time range without override.
         </p>
       </div>
     </section>
@@ -117,7 +119,7 @@
         <figure class="case-table-wrap case-workflow-figure">
           <img
             src="../assets/images/splunk-utility-workflow.svg"
-            alt="High-level workflow for Splunk Utility Tool 4.0 showing input, validation, workflow selection, segmented job dispatch, task execution, status output, and operator review."
+            alt="High-level workflow for Splunk Utility Tool 4.0 showing input, validation, workflow selection, dispatch planning, task execution, status output, and operator review."
             loading="lazy"
           >
         </figure>
@@ -131,7 +133,10 @@
         <p>
           The value of the tool is not just automation for its own sake. It is about reducing
           repetitive manual handling, improving operational consistency, and making recurring
-          workflows easier to run, support, and maintain over time.
+          workflows easier to run, support, and maintain over time. Saved-search no-override mode
+          is intentionally distinct from operator-entered override dates: the confirmation uses the
+          saved search's configured time range where available, and epoch earliest/latest values are
+          rendered in human-readable SGT while retaining the raw Splunk values for evidence.
         </p>
       </div>
     </section>
@@ -143,6 +148,9 @@
         <ul class="case-list">
           <li>Reduce manual effort in recurring workflows</li>
           <li>Improve reliability through structured execution</li>
+          <li>Support single-window Custom dispatch for fixed regeneration windows</li>
+          <li>Support Daily, Weekly, and Monthly sliced regeneration for period-based reruns</li>
+          <li>Show the active time-range mode and total dispatch count before execution</li>
           <li>Support clearer control over task dispatch and flow</li>
           <li>Make the solution easier to maintain and extend</li>
           <li>Improve long-term operational supportability</li>
@@ -162,7 +170,10 @@
       <div class="case-shell">
         <p class="eyebrow">Status</p>
         <h2>The work remains part of active independent portfolio development.</h2>
-        <p>Independent project and active portfolio work</p>
+        <p>
+          Independent project and active portfolio work. A production-test build has been prepared
+          for validation, but this does not claim completed production deployment.
+        </p>
       </div>
     </section>
 
@@ -173,7 +184,9 @@
         <p>
           The portfolio overview summarizes the project at a high level. A deeper engineering
           write-up is available in the project repository, covering dispatch workflow, validation
-          coverage, safety controls, and implementation boundaries.
+          coverage, safety controls, production-test packaging status, and implementation
+          boundaries. The tool is a client-side operational aid and does not replace Splunk's
+          scheduler.
         </p>
         <div class="button-row">
           <a

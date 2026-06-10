@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 280" role="img" aria-labelledby="title desc">
   <title id="title">Splunk Utility Tool 4.0 workflow overview</title>
-  <desc id="desc">High-level workflow showing input, validation, workflow selection, segmented job dispatch, task execution, status output, and operator review.</desc>
+  <desc id="desc">High-level workflow showing input, validation, workflow selection, dispatch planning, task execution, status output, and operator review.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
       <path d="M0 0L10 5L0 10Z" fill="#56b5c5"/>
@@ -72,12 +72,12 @@
 
   <rect class="flow-box" x="600" y="80" width="160" height="120" rx="20"/>
   <text class="box-label" x="680" y="118">
-    <tspan x="680" dy="0">Segmented Job</tspan>
-    <tspan x="680" dy="30">Dispatch</tspan>
+    <tspan x="680" dy="0">Dispatch</tspan>
+    <tspan x="680" dy="30">Plan</tspan>
   </text>
   <text class="box-copy" x="680" y="168">
-    <tspan x="680" dy="0">controlled</tspan>
-    <tspan x="680" dy="22">execution stages</tspan>
+    <tspan x="680" dy="0">custom or sliced</tspan>
+    <tspan x="680" dy="22">time windows</tspan>
   </text>
 
   <rect class="flow-box" x="790" y="80" width="160" height="120" rx="20"/>
