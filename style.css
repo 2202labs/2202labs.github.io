@@ -590,6 +590,10 @@ button:focus-visible {
   margin-top: 1rem;
 }
 
+.evidence-grid-full {
+  grid-template-columns: 1fr;
+}
+
 .evidence-card {
   margin: 0;
   padding: 1rem;
