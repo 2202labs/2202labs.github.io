@@ -74,7 +74,7 @@
           final report that management expects at month end.
         </p>
         <p>
-          The tool treats this as an operational control problem, not just a data-entry problem.
+          The tool treats this as a control problem that begins before data entry and ends after review.
           The important work is to preserve raw events, derive daily records consistently, surface
           discrepancies clearly, require reasoned admin action, and produce a repeatable report
           output without relying on cloud infrastructure.
@@ -241,14 +241,13 @@
 
     <section class="case-section" id="demonstrates">
       <div class="case-shell">
-        <p class="eyebrow">What This Demonstrates</p>
-        <h2>The project extends the portfolio beyond Splunk into broader operational tooling.</h2>
+        <p class="eyebrow">Engineering Signal</p>
+        <h2>Stateful reconciliation beyond a simple data-entry screen.</h2>
         <p>
-          The timesheet tool demonstrates workflow state modeling, data reconciliation,
-          offline application design, audit-friendly admin tooling, and reporting/export
-          generation. Those are the same kinds of engineering concerns that matter in platform
-          operations: clear inputs, repeatable rules, controlled exception handling, and outputs
-          that other people can trust.
+          A missing IN event, a missing OUT event, and an approved leave day cannot share one generic
+          correction path. Modeling those states separately drove the discrepancy queue, resolution
+          options, override history, and final reporting rules. The same design also covers local
+          persistence, offline operation, and exports built only from reviewed records.
         </p>
       </div>
     </section>
