@@ -24,6 +24,7 @@
         <a href="../index.html">Home</a>
         <a href="#scope">Scope</a>
         <a href="#workflow">Workflow</a>
+        <a href="#evidence">Evidence</a>
         <a href="#governance">Governance</a>
         <a href="#outcomes">Outcomes</a>
       </nav>
@@ -57,6 +58,7 @@
         </div>
         <div class="button-row">
           <a class="button button-primary" href="#governance">View Governance</a>
+          <a class="button button-secondary" href="https://github.com/skyredt/splunk-log-onboarding-governance" target="_blank" rel="noreferrer">View Evidence Pack</a>
           <a class="button button-secondary" href="../index.html">Back to Home</a>
         </div>
       </div>
@@ -170,6 +172,38 @@
           <li>Generate a Splunk configuration report for end users.</li>
           <li>Support ongoing governance and lifecycle management.</li>
         </ol>
+      </div>
+    </section>
+
+    <section class="case-section" id="evidence">
+      <div class="case-shell">
+        <p class="eyebrow">Sanitized Evidence</p>
+        <h2>A reusable evidence pack makes the delivery method inspectable.</h2>
+        <p>
+          The public artifact is a reconstructed version of the working method, not an original
+          client document. It records reporting intent, use-case mapping, required data, controlled
+          validation, retention and ownership decisions, exceptions, and operational acceptance
+          without publishing real SPL, event samples, hostnames, indexes, sourcetypes, or report names.
+        </p>
+        <figure class="case-table-wrap case-workflow-figure">
+          <img
+            src="../assets/images/log-onboarding-lifecycle.svg"
+            alt="Six-stage log onboarding lifecycle from reporting intent through classification, requirements, validation, governance, and operational handover."
+            loading="lazy"
+          >
+        </figure>
+        <div class="case-transition" aria-label="Public log onboarding artifacts">
+          <article class="case-block">
+            <h3>Source Assessment</h3>
+            <p>Maps reporting intent and six security categories to required events, fields, ownership, retention, and readiness.</p>
+            <a href="https://github.com/skyredt/splunk-log-onboarding-governance/blob/main/templates/source-assessment.md" target="_blank" rel="noreferrer">Review the assessment template</a>
+          </article>
+          <article class="case-block">
+            <h3>Validation and Handover</h3>
+            <p>Records controlled activity, data-quality checks, exceptions, evidence references, operational acceptance, and review triggers.</p>
+            <a href="https://github.com/skyredt/splunk-log-onboarding-governance/blob/main/templates/validation-and-handover.md" target="_blank" rel="noreferrer">Review the validation template</a>
+          </article>
+        </div>
       </div>
     </section>
 
