@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Python Timesheet Reconciliation Tool | 2202 Labs</title>
+  <title>Timesheet Reconciliation &amp; Management Reporting Tool | 2202 Labs</title>
   <meta
     name="description"
-    content="An offline Python desktop prototype for timesheet reconciliation, discrepancy review, audit-friendly admin overrides, and monthly PDF reporting."
+    content="A completed offline Python desktop prototype for timesheet reconciliation, exception review, audit-friendly admin decisions, and selectable management-reporting outputs."
   >
-  <meta property="og:title" content="Python Timesheet Reconciliation Tool | 2202 Labs">
-  <meta property="og:description" content="An offline Python desktop prototype for timesheet reconciliation, discrepancy review, audit-friendly admin overrides, and monthly PDF reporting.">
+  <meta property="og:title" content="Timesheet Reconciliation &amp; Management Reporting Tool | 2202 Labs">
+  <meta property="og:description" content="A completed offline Python desktop prototype for timesheet reconciliation, exception review, audit-friendly admin decisions, and selectable management-reporting outputs.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/timesheet-workflow-automation.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -34,23 +34,25 @@
   <main class="case-main">
     <section class="section case-hero">
       <div class="case-shell">
-        <p class="eyebrow">Active Prototype / Operational Design Case Study</p>
-        <h1>Python Timesheet Reconciliation Tool</h1>
+        <p class="eyebrow">Completed Prototype / Operational Design Case Study</p>
+        <h1>Timesheet Reconciliation &amp; Management Reporting Tool</h1>
         <p class="case-subtitle">
-          An offline Python desktop tool for turning attendance events, leave/off-day context,
-          admin review, and monthly reporting into a controlled reconciliation workflow.
+          A completed offline Python desktop prototype for turning attendance events,
+          leave/off-day context, exception review, and management reporting into a controlled
+          reconciliation workflow.
         </p>
         <p class="case-intro">
-          The project is intentionally local-first. It is designed for operational environments
+          The project was intentionally designed as local-first. It explored an operational model
           where internet access, cloud services, or SSO cannot be assumed, and where timesheet
-          records still need to be reviewable, explainable, and exportable.
+          records still need to be reviewable, explainable, and exportable. It is presented as a
+          completed portfolio prototype, not as a production deployment or current office initiative.
         </p>
         <div class="case-meta" aria-label="Project metadata">
           <span>Python desktop application</span>
           <span>Offline-first workflow</span>
           <span>Local persistence</span>
           <span>Attendance reconciliation</span>
-          <span>PDF reporting</span>
+          <span>Management reporting</span>
         </div>
         <div class="button-row">
           <a class="button button-primary" href="#workflow">View Workflow</a>
@@ -84,16 +86,15 @@
         <p class="eyebrow">Offline Design</p>
         <h2>Local operation matters when connectivity and identity services are not guaranteed.</h2>
         <p>
-          This prototype is designed as an offline desktop application because some operating
+          This prototype was designed as an offline desktop application because some operating
           environments cannot assume internet access, hosted workflow platforms, cloud storage, or
           central SSO. The application keeps the reconciliation workflow close to the operator and
           relies on local persistence so work can continue in a controlled environment.
         </p>
         <p>
-          Attendance capture in the prototype can be represented through manual or simulated
-          entries. A production direction could involve staff pass or RFID-style tap-in/tap-out
-          events, but the portfolio positioning here is limited to the offline workflow design and
-          active prototype.
+          Attendance capture was represented through manual or simulated entries. The portfolio
+          case study focuses on the offline workflow, reconciliation rules, exception handling,
+          and report selection without claiming integration with live access-control systems.
         </p>
       </div>
     </section>
@@ -113,7 +114,8 @@
           <li><strong>Admin review:</strong> present exceptions for review instead of silently normalizing them.</li>
           <li><strong>Override with reason:</strong> allow controlled correction, classification, or approval with an explanation.</li>
           <li><strong>Monthly consolidation:</strong> combine reviewed daily records into a month-level timesheet view.</li>
-          <li><strong>PDF export:</strong> generate a report-oriented output that can act as the monthly system-of-record artifact.</li>
+          <li><strong>Output selection:</strong> choose between a Detailed Timing Timesheet and a Man-Day Timesheet for the intended management review.</li>
+          <li><strong>Evidence review:</strong> check the selected output with the reconciled records as part of a UAT-style evaluation flow.</li>
         </ol>
       </div>
     </section>
@@ -131,33 +133,36 @@
           <li><strong>Admin override with reason</strong> to keep exceptions explicit instead of hidden inside edited totals.</li>
           <li><strong>Audit-friendly history</strong> for review decisions, override reasons, and corrected records.</li>
           <li><strong>Monthly consolidation</strong> that rolls reviewed daily records into a management-ready reporting period.</li>
-          <li><strong>PDF report output</strong> to support repeatable month-end submission and archival.</li>
+          <li><strong>Selectable management-reporting outputs</strong> for Detailed Timing and Man-Day views.</li>
           <li><strong>Management summary views</strong> for reviewing exception counts, completion status, and monthly totals.</li>
+          <li><strong>Simulated May UAT dataset</strong> for evaluating the workflow without exposing real staff or operational data.</li>
         </ul>
       </div>
     </section>
 
     <section class="case-section" id="review-surfaces">
       <div class="case-shell">
-        <p class="eyebrow">Visual Proof Direction</p>
-        <h2>Public screenshots should prove the workflow without exposing operational data.</h2>
+        <p class="eyebrow">Evaluation and Data Safety</p>
+        <h2>Simulated records support credible review without exposing operational data.</h2>
         <p>
-          No real staff names, badge IDs, company names, internal policies, or personal data are
-          needed to explain the tool. Future visual proof can use sanitized placeholder records
-          that demonstrate the operating flow.
+          The completed prototype was evaluated with a simulated May UAT dataset covering the
+          reconciliation, exception-review, and report-selection flow. The resulting material is
+          treated as a UAT-style evidence pack rather than evidence of production use. No real
+          staff names, badge IDs, company names, internal policies, or operational records are
+          needed to explain the project.
         </p>
-        <div class="case-transition" aria-label="Potential sanitized screen concepts">
+        <div class="case-transition" aria-label="Sanitized workflow surfaces">
           <article class="case-block">
             <h3>Daily Attendance Review</h3>
-            <p>Show paired sessions, missing entries, leave/off-day status, and records awaiting review.</p>
+            <p>Pairs sessions with missing entries, leave/off-day status, and records awaiting review.</p>
           </article>
           <article class="case-block">
             <h3>Discrepancy Resolution</h3>
-            <p>Show an exception queue where an admin selects a classification or override reason.</p>
+            <p>Provides an exception queue where an admin selects a classification or override reason.</p>
           </article>
           <article class="case-block">
-            <h3>Monthly Export Summary</h3>
-            <p>Show reviewed totals, unresolved exceptions, and the PDF export action for the reporting period.</p>
+            <h3>Report Selection and Review</h3>
+            <p>Review reconciled totals and choose either the Detailed Timing or Man-Day output for the reporting period.</p>
           </article>
         </div>
       </div>
@@ -204,10 +209,10 @@
             </dd>
           </div>
           <div class="case-definition">
-            <dt>Export-focused reporting</dt>
+            <dt>Selectable management reporting</dt>
             <dd>
-              Monthly PDF output is treated as a first-class deliverable because the value of the
-              tool depends on producing a repeatable report that can be reviewed and archived.
+              Detailed Timing and Man-Day outputs provide different levels of reporting detail
+              while using the same set of reviewed and reconciled records.
             </dd>
           </div>
         </dl>
@@ -249,13 +254,19 @@
 
     <section class="case-section" id="status">
       <div class="case-shell">
-        <p class="eyebrow">Current Status / Next Steps</p>
-        <h2>This is an active build and operational design case study, not a production-proven deployment claim.</h2>
+        <p class="eyebrow">Project Status</p>
+        <h2>The prototype is complete and retained as a portfolio engineering case study.</h2>
         <p>
-          The current portfolio value is the design of the reconciliation workflow and the
-          direction of the Python desktop prototype. Next work should focus on tightening the
-          local data model, refining discrepancy rules, improving admin review screens, and adding
-          sanitized visual proof once representative demo records are ready.
+          Development for office use has concluded. The project remains valuable as evidence of
+          offline Python application design, deterministic reconciliation, controlled exception
+          handling, audit-friendly review decisions, and selectable management reporting. It was
+          not deployed as a production system, and the simulated UAT material should not be read
+          as a claim of organizational adoption.
+        </p>
+        <p>
+          Production adoption would require organization-specific validation of identity,
+          attendance, policy, security, retention, and reporting requirements. Those activities
+          are outside the scope of this completed portfolio prototype.
         </p>
         <div class="case-footer-links">
           <a class="button button-secondary" href="../index.html">Back to Home</a>
