@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splunk Platform Maintenance Automation | 2202 Labs</title>
+  <meta name="description" content="Sanitized case study on role-aware upgrade and patch automation for Splunk platform components across RHEL and Windows environments.">
+  <meta property="og:title" content="Splunk Platform Maintenance Automation | 2202 Labs">
+  <meta property="og:description" content="Role-aware upgrade and patch automation with health gates, bounded batches, validation, and recovery handling.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://2202labs.github.io/projects/splunk-platform-maintenance-automation.html">
+  <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body class="project-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">2202 Labs</a>
+      <nav class="site-nav" aria-label="Project navigation">
+        <a href="../index.html">Home</a><a href="#problem">Problem</a><a href="#roles">Roles</a>
+        <a href="#workflow">Workflow</a><a href="#safeguards">Safeguards</a><a href="#outcome">Outcome</a>
+      </nav>
+    </div>
+  </header>
+  <main class="case-main">
+    <section class="section case-hero">
+      <div class="case-shell">
+        <p class="eyebrow">Platform Engineering Case Study / Selected Work, 2022–Present</p>
+        <h1>Splunk Platform Maintenance Automation</h1>
+        <p class="case-subtitle">Role-aware upgrade and patch coordination across Splunk platform components on RHEL and Windows, with explicit health gates and recovery checkpoints.</p>
+        <p class="case-intro">
+          A distributed Splunk platform cannot be maintained as a flat list of servers. Management,
+          data, search, and forwarding roles have different dependencies and validation needs. I used
+          Bash and PowerShell automation to make that sequencing repeatable while keeping operators
+          in control of each transition.
+        </p>
+        <p class="case-intro">This public case study describes the engineering pattern only. Internal scripts, commands, versions, topology counts, hostnames, configuration values, and change records are not published.</p>
+        <div class="case-meta" aria-label="Project metadata">
+          <span>Splunk Enterprise</span><span>RHEL and Windows</span><span>Bash and PowerShell</span>
+          <span>Upgrade and patch operations</span><span>Recovery checkpoints</span>
+        </div>
+        <div class="button-row"><a class="button button-primary" href="#workflow">View Workflow</a><a class="button button-secondary" href="../index.html">Back to Home</a></div>
+      </div>
+    </section>
+    <section class="case-section" id="problem">
+      <div class="case-shell">
+        <p class="eyebrow">Problem</p><h2>Maintenance order is part of platform availability.</h2>
+        <p>Host-by-host patching becomes risky when it ignores Splunk roles, cluster state, and dependent services. A server can return from a restart while its Splunk function is still unhealthy. The procedure therefore needed to distinguish a successful command from a successfully restored platform role.</p>
+        <ul class="case-list">
+          <li>Different roles require different prechecks, commands, restart behavior, and validation.</li>
+          <li>Clustered tiers need bounded batches so the platform can recover between changes.</li>
+          <li>A failed node must stop progression without forcing the whole procedure to restart.</li>
+          <li>Operators need a clear record of completed, blocked, retried, and deferred work.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="case-section" id="roles">
+      <div class="case-shell">
+        <p class="eyebrow">Role Coverage</p><h2>The workflow separates coordinating, clustered, and data-path responsibilities.</h2>
+        <div class="case-transition">
+          <article class="case-block"><h3>Management roles</h3><p>Cluster manager, license manager, deployer, and related coordinating components are handled according to dependency order.</p></article>
+          <article class="case-block"><h3>Clustered tiers</h3><p>Indexer peers and search-head members progress in bounded groups with health and stability checks between batches.</p></article>
+          <article class="case-block"><h3>Forwarding tier</h3><p>Heavy forwarders are validated as data-path components, including service state and expected forwarding behavior.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="case-section" id="workflow">
+      <div class="case-shell">
+        <p class="eyebrow">Workflow</p><h2>Automation advances only after the current role is healthy.</h2>
+        <figure class="case-table-wrap case-workflow-figure">
+          <img src="../assets/images/splunk-platform-maintenance-workflow.svg" alt="Role-aware Splunk platform maintenance workflow with planning, prechecks, control-plane maintenance, bounded clustered-tier batches, edge-role maintenance, validation, and a recovery loop." loading="lazy">
+        </figure>
+        <ol class="case-flow">
+          <li><strong>Inventory:</strong> classify every target by platform role, dependency, maintenance group, and operational owner.</li>
+          <li><strong>Precheck:</strong> confirm backups, capacity, service health, cluster health, and the approved change window.</li>
+          <li><strong>Control plane:</strong> maintain coordinating roles in the required order and validate each role before proceeding.</li>
+          <li><strong>Clustered tiers:</strong> process indexers and search-head members in bounded batches, waiting for stability between groups.</li>
+          <li><strong>Forwarding tier:</strong> complete heavy-forwarder maintenance and verify the expected data path.</li>
+          <li><strong>Closeout:</strong> validate service, cluster, ingestion, and search health; record exceptions and hand over evidence.</li>
+        </ol>
+      </div>
+    </section>
+    <section class="case-section" id="safeguards">
+      <div class="case-shell">
+        <p class="eyebrow">Safeguards and Recovery</p><h2>A stopped run should remain understandable and resumable.</h2>
+        <p>The automation surfaced the current host, role, action, result, and next gate so an operator could stop safely when validation failed. Recovery resumed from the last confirmed healthy checkpoint after the exception was addressed.</p>
+        <ul class="case-list">
+          <li>Pre-flight checks before any change is applied</li><li>Role-specific command and validation paths</li>
+          <li>Bounded batches for clustered components</li><li>Stop-on-failure behavior at health gates</li>
+          <li>Structured status and exception recording</li><li>Post-maintenance service, cluster, ingestion, and search verification</li>
+        </ul>
+      </div>
+    </section>
+    <section class="case-section" id="outcome">
+      <div class="case-shell">
+        <p class="eyebrow">Engineering Outcome</p><h2>The runbook became a repeatable control flow instead of a memory exercise.</h2>
+        <p>The resulting approach made role order, health checks, recovery points, and handover state explicit. It reduced reliance on operator memory and made interrupted maintenance easier to reason about, without claiming that automation removed the need for change approval or experienced platform judgement.</p>
+        <p>This case study demonstrates distributed-role awareness, operational sequencing, failure containment, RHEL and Windows administration, and automation designed around safe recovery.</p>
+        <div class="case-footer-links"><a class="button button-secondary" href="../index.html">Back to Home</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="case-shell footer-shell"><p>2202 Labs</p><p>&copy; 2026 Gabriel Wu</p></div></footer>
+</body>
+</html>
