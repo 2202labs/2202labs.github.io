@@ -255,6 +255,7 @@ code {
 
 .project-grid,
 .competency-grid,
+.credential-grid,
 .principle-grid,
 .contact-grid {
   display: grid;
@@ -267,6 +268,14 @@ code {
 
 .competency-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.credentials-heading {
+  margin-top: 3rem;
+}
+
+.credential-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .principle-grid {
@@ -310,6 +319,7 @@ code {
 
 .project-card p,
 .info-card li,
+.info-card p,
 .principle-card p,
 .contact-card a,
 .contact-card p,
@@ -373,6 +383,14 @@ code {
   margin-top: 0.65rem;
 }
 
+.info-card p {
+  margin: 0;
+}
+
+.info-card p + p {
+  margin-top: 0.65rem;
+}
+
 .principle-card p,
 .resume-copy,
 .site-footer p,
@@ -386,6 +404,38 @@ code {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.8rem;
+}
+
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.career-item {
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.career-item h3 {
+  margin: 0.25rem 0 0.55rem;
+  font-size: 1.05rem;
+}
+
+.career-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.career-date {
+  color: var(--accent) !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .contact-card a {
@@ -413,6 +463,7 @@ button:focus-visible {
 
 @media (max-width: 1040px) {
   .competency-grid,
+  .credential-grid,
   .principle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -438,6 +489,10 @@ button:focus-visible {
     align-items: flex-start;
   }
 
+  .career-grid {
+    grid-template-columns: 1fr;
+  }
+
   .site-nav {
     justify-content: flex-start;
   }
@@ -445,6 +500,7 @@ button:focus-visible {
   .hero-grid,
   .project-grid,
   .competency-grid,
+  .credential-grid,
   .principle-grid,
   .contact-grid {
     grid-template-columns: 1fr;
@@ -529,6 +585,10 @@ button:focus-visible {
 .case-section {
   padding: 2.8rem 0;
   border-top: 1px solid rgba(132, 173, 195, 0.12);
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
 }
 
 .case-section h2 {
@@ -727,6 +787,10 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
+  section[id] {
+    scroll-margin-top: 9rem;
+  }
+
   .case-shell {
     width: min(860px, calc(100% - 1.25rem));
   }
