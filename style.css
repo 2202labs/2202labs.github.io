@@ -336,6 +336,19 @@ code {
   font-weight: 600;
 }
 
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.25rem;
+  margin-top: auto;
+  padding-top: 1.35rem;
+}
+
+.card-links .card-link {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .card-link {
   color: var(--text);
 }
