@@ -587,6 +587,10 @@ button:focus-visible {
   border-top: 1px solid rgba(132, 173, 195, 0.12);
 }
 
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
 .case-section h2 {
   margin: 0 0 1rem;
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -783,6 +787,10 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
+  section[id] {
+    scroll-margin-top: 9rem;
+  }
+
   .case-shell {
     width: min(860px, calc(100% - 1.25rem));
   }

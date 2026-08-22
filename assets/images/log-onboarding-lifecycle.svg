@@ -69,5 +69,5 @@
 
   <rect x="60" y="474" width="1080" height="52" rx="12" fill="#102f3a" stroke="#287d78" stroke-width="1.5"/>
   <text class="band-title" x="84" y="506">CONTINUOUS CONTROL</text>
-  <text class="band-body" x="284" y="506">Evidence references · named owners · explicit decisions · material-change review</text>
+  <text class="band-body" x="360" y="506">Evidence references · named owners · explicit decisions · material-change review</text>
 </svg>
