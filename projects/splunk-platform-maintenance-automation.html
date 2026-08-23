@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Splunk Platform Maintenance Automation | 2202 Labs</title>
-  <meta name="description" content="Sanitized case study on role-aware upgrade and patch automation for Splunk platform components across RHEL and Windows environments.">
+  <meta name="description" content="Production-used Windows automation for node-level Splunk Enterprise upgrades, with role-specific checks, backups, checkpoints, unattended MSI installation, and recovery evidence.">
   <meta property="og:title" content="Splunk Platform Maintenance Automation | 2202 Labs">
-  <meta property="og:description" content="Role-aware upgrade and patch automation with health gates, bounded batches, validation, and recovery handling.">
+  <meta property="og:description" content="Production-used Windows Splunk Enterprise upgrade automation with role-specific checks, backups, unattended MSI installation, checkpoints, and recovery handling.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://2202labs.github.io/projects/splunk-platform-maintenance-automation.html">
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
@@ -26,77 +26,78 @@
   <main class="case-main">
     <section class="section case-hero">
       <div class="case-shell">
-        <p class="eyebrow">Platform Engineering Case Study / Selected Work, 2022–Present</p>
+        <p class="eyebrow">Platform Engineering Case Study / Production-used Windows upgrade automation</p>
         <h1>Splunk Platform Maintenance Automation</h1>
-        <p class="case-subtitle">Role-aware upgrade and patch coordination across Splunk platform components on RHEL and Windows, with explicit health gates and recovery checkpoints.</p>
+        <p class="case-subtitle">Production-used node-level Splunk Enterprise upgrade automation for Windows Server 2019, evolving toward topology-aware platform orchestration.</p>
         <p class="case-intro">
-          A distributed Splunk platform cannot be maintained as a flat list of servers. Management,
-          data, search, and forwarding roles have different dependencies and validation needs. I used
-          Bash and PowerShell automation to make that sequencing repeatable while keeping operators
-          in control of each transition.
+          I built a Windows upgrade kit that performs the Splunk Enterprise upgrade itself rather than
+          only printing commands. The common upgrade engine detects installed and target versions,
+          validates the installer, backs up important Splunk state, runs the unattended MSI upgrade,
+          restarts Splunk, and verifies the result.
         </p>
-        <p class="case-intro">This public case study describes the engineering pattern only. Internal scripts, commands, versions, topology counts, hostnames, configuration values, and change records are not published.</p>
+        <p class="case-intro">The production workflow is run one node or component at a time. I decide which server runs next, while each local workflow applies role-specific checks, stops on mandatory failures, and records evidence for troubleshooting and recovery.</p>
         <div class="case-meta" aria-label="Project metadata">
-          <span>Splunk Enterprise</span><span>RHEL and Windows</span><span>Bash and PowerShell</span>
-          <span>Upgrade and patch operations</span><span>Recovery checkpoints</span>
+          <span>Splunk Enterprise</span><span>Windows Server 2019</span><span>PowerShell</span>
+          <span>Unattended MSI upgrades</span><span>Checkpoints and logs</span>
         </div>
         <div class="button-row"><a class="button button-primary" href="#workflow">View Workflow</a><a class="button button-secondary" href="../index.html">Back to Home</a></div>
       </div>
     </section>
     <section class="case-section" id="problem">
       <div class="case-shell">
-        <p class="eyebrow">Problem</p><h2>Maintenance order is part of platform availability.</h2>
-        <p>Host-by-host patching becomes risky when it ignores Splunk roles, cluster state, and dependent services. A server can return from a restart while its Splunk function is still unhealthy. The procedure therefore needed to distinguish a successful command from a successfully restored platform role.</p>
+        <p class="eyebrow">Problem</p><h2>A Splunk upgrade needs more than an installer command.</h2>
+        <p>Manual upgrades repeat the same high-risk steps: confirm versions, validate the installer, protect configuration and operational state, stop Splunk, run the MSI, recover the service, and verify that the upgraded role is healthy. The kit turns those steps into a repeatable node-level workflow while leaving platform-wide sequencing under operator control.</p>
         <ul class="case-list">
-          <li>Different roles require different prechecks, commands, restart behavior, and validation.</li>
-          <li>Clustered tiers need bounded batches so the platform can recover between changes.</li>
-          <li>A failed node must stop progression without forcing the whole procedure to restart.</li>
-          <li>Operators need a clear record of completed, blocked, retried, and deferred work.</li>
+          <li>Different roles require different prechecks, restart behavior, and post-upgrade validation.</li>
+          <li>A disconnected RDP session must not interrupt an unattended upgrade.</li>
+          <li>A failed node must stop its workflow without losing recovery information.</li>
+          <li>Operators need detailed logs, MSI output, checkpoints, and a final summary.</li>
         </ul>
       </div>
     </section>
     <section class="case-section" id="roles">
       <div class="case-shell">
-        <p class="eyebrow">Role Coverage</p><h2>The workflow separates coordinating, clustered, and data-path responsibilities.</h2>
+        <p class="eyebrow">Role Coverage</p><h2>Dedicated wrappers share one common upgrade engine.</h2>
         <div class="case-transition">
-          <article class="case-block"><h3>Management roles</h3><p>Cluster manager, license manager, deployer, and related coordinating components are handled according to dependency order.</p></article>
-          <article class="case-block"><h3>Clustered tiers</h3><p>Indexer peers and search-head members progress in bounded groups with health and stability checks between batches.</p></article>
-          <article class="case-block"><h3>Forwarding tier</h3><p>Heavy forwarders are validated as data-path components, including service state and expected forwarding behavior.</p></article>
+          <article class="case-block"><h3>Management components</h3><p>Cluster Manager, License Manager, Deployer, Deployment Server, and standalone variants use dedicated role-aware wrappers.</p></article>
+          <article class="case-block"><h3>Cluster members</h3><p>Search Head Cluster members and Indexer Cluster peers are upgraded individually, with health verified before the next node is started.</p></article>
+          <article class="case-block"><h3>Forwarding tier</h3><p>Heavy Forwarders use a dedicated workflow with service and relevant-port checks after the upgrade.</p></article>
         </div>
       </div>
     </section>
     <section class="case-section" id="workflow">
       <div class="case-shell">
-        <p class="eyebrow">Workflow</p><h2>Automation advances only after the current role is healthy.</h2>
+        <p class="eyebrow">Current Workflow</p><h2>Each node completes a controlled upgrade and verification cycle.</h2>
         <figure class="case-table-wrap case-workflow-figure">
-          <img src="../assets/images/splunk-platform-maintenance-workflow.svg" alt="Role-aware Splunk platform maintenance workflow with planning, prechecks, control-plane maintenance, bounded clustered-tier batches, edge-role maintenance, validation, and a recovery loop." loading="lazy">
+          <img src="../assets/images/splunk-platform-maintenance-workflow.svg" alt="Node-level Windows Splunk Enterprise upgrade workflow with version detection, prechecks, backups, unattended MSI installation, service recovery, verification, and operator-controlled progression." loading="lazy">
         </figure>
         <ol class="case-flow">
-          <li><strong>Inventory:</strong> classify every target by platform role, dependency, maintenance group, and operational owner.</li>
-          <li><strong>Precheck:</strong> confirm backups, capacity, service health, cluster health, and the approved change window.</li>
-          <li><strong>Control plane:</strong> maintain coordinating roles in the required order and validate each role before proceeding.</li>
-          <li><strong>Clustered tiers:</strong> process indexers and search-head members in bounded batches, waiting for stability between groups.</li>
-          <li><strong>Forwarding tier:</strong> complete heavy-forwarder maintenance and verify the expected data path.</li>
-          <li><strong>Closeout:</strong> validate service, cluster, ingestion, and search health; record exceptions and hand over evidence.</li>
+          <li><strong>Detect:</strong> identify the installed Splunk version and target version.</li>
+          <li><strong>Precheck:</strong> validate the installer and confirm the host is ready for upgrade.</li>
+          <li><strong>Protect:</strong> stop Splunk and back up important configuration and operational state.</li>
+          <li><strong>Upgrade:</strong> run the Windows MSI unattended and capture MSI output.</li>
+          <li><strong>Recover:</strong> restart Splunk, falling back to Windows Service Control if splunk.exe start fails.</li>
+          <li><strong>Verify:</strong> check service status, installed version, relevant ports, checkpoints, and final summary before the operator proceeds to the next node.</li>
         </ol>
       </div>
     </section>
     <section class="case-section" id="safeguards">
       <div class="case-shell">
-        <p class="eyebrow">Safeguards and Recovery</p><h2>A stopped run should remain understandable and resumable.</h2>
-        <p>The automation surfaced the current host, role, action, result, and next gate so an operator could stop safely when validation failed. Recovery resumed from the last confirmed healthy checkpoint after the exception was addressed.</p>
+        <p class="eyebrow">Safeguards and Recovery</p><h2>Local failure handling is automated; platform progression remains operator-controlled.</h2>
+        <p>Mandatory precheck or upgrade failures stop the individual server workflow. Warning-level findings can be explicitly overridden by the operator. Detailed logs, MSI logs, checkpoints, state information, and summaries preserve enough context for troubleshooting and recovery before the next component is started.</p>
         <ul class="case-list">
-          <li>Pre-flight checks before any change is applied</li><li>Role-specific command and validation paths</li>
-          <li>Bounded batches for clustered components</li><li>Stop-on-failure behavior at health gates</li>
-          <li>Structured status and exception recording</li><li>Post-maintenance service, cluster, ingestion, and search verification</li>
+          <li>Version detection and installer validation</li><li>Configuration and operational-state backups</li>
+          <li>Unattended MSI execution</li><li>Scheduled Task support for RDP-disconnected sessions</li>
+          <li>Stop-on-failure behavior for mandatory local checks</li><li>Service, version, and relevant-port verification</li>
         </ul>
       </div>
     </section>
     <section class="case-section" id="outcome">
       <div class="case-shell">
-        <p class="eyebrow">Engineering Outcome</p><h2>The runbook became a repeatable control flow instead of a memory exercise.</h2>
-        <p>The resulting approach made role order, health checks, recovery points, and handover state explicit. It reduced reliance on operator memory and made interrupted maintenance easier to reason about, without claiming that automation removed the need for change approval or experienced platform judgement.</p>
-        <p>This case study demonstrates distributed-role awareness, operational sequencing, failure containment, RHEL and Windows administration, and automation designed around safe recovery.</p>
+        <p class="eyebrow">Engineering Outcome</p><h2>Node-level upgrade execution became repeatable and recoverable.</h2>
+        <p>The kit moved Splunk Enterprise upgrades from a fragile sequence of manually repeated commands to a documented Windows workflow with backups, unattended installation, fallback service recovery, validation, and detailed evidence. I still control which platform component runs next, deliberately limiting blast radius during clustered maintenance.</p>
+        <p>This case study demonstrates production-used Windows upgrade automation, Splunk role awareness, failure containment, checkpoint-based recovery, and operational judgement.</p>
+        <div class="case-section-note"><p><strong>Future direction:</strong> topology-aware orchestration is being designed separately. Planned capabilities include 8089-based coordination, automatic SHC and indexer-cluster health gates, indexer maintenance mode, platform-wide state tracking, resume-from-failure, a Splunk Web progress view, and an OS-neutral orchestration layer. These features are not represented as current production behavior.</p></div>
         <div class="case-footer-links"><a class="button button-secondary" href="../index.html">Back to Home</a></div>
       </div>
     </section>

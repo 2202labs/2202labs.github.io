@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="610" viewBox="0 0 1200 610" role="img" aria-labelledby="title desc">
-  <title id="title">Role-aware Splunk platform maintenance workflow</title>
-  <desc id="desc">A gated maintenance flow moves from inventory and prechecks through control-plane roles, clustered data and search tiers, heavy forwarders, validation, and evidence handover.</desc>
+  <title id="title">Node-level Splunk Enterprise upgrade workflow</title>
+  <desc id="desc">A Windows upgrade flow moves from version detection and prechecks through backup, unattended MSI installation, service recovery, verification, and operator-controlled progression.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1728"/><stop offset="1" stop-color="#111f36"/></linearGradient>
     <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#020817" flood-opacity="0.36"/></filter>
@@ -16,35 +16,35 @@
     </style>
   </defs>
   <rect width="1200" height="610" rx="24" fill="url(#bg)"/>
-  <text x="60" y="54" fill="#f5f9ff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Role-aware maintenance with health gates between tiers</text>
-  <text x="60" y="84" fill="#8fa5bb" font-family="Segoe UI, Arial, sans-serif" font-size="16">Sanitized control flow; topology, versions, commands, and internal scripts are intentionally omitted.</text>
+  <text x="60" y="54" fill="#f5f9ff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Node-level Splunk upgrade with operator-controlled progression</text>
+  <text x="60" y="84" fill="#8fa5bb" font-family="Segoe UI, Arial, sans-serif" font-size="16">Production-used Windows workflow; internal commands, hosts, and configuration values are intentionally omitted.</text>
   <rect class="gate" x="60" y="125" width="300" height="122"/>
-  <text class="number" x="84" y="154">01 · PLAN</text><text class="heading" x="84" y="186">Inventory and classify</text>
-  <text class="body" x="84" y="216">Map host roles, dependencies,</text><text class="body" x="84" y="237">maintenance order, and owners.</text>
+  <text class="number" x="84" y="154">01 · DETECT</text><text class="heading" x="84" y="186">Identify versions</text>
+  <text class="body" x="84" y="216">Detect installed and target</text><text class="body" x="84" y="237">Splunk Enterprise versions.</text>
   <path class="arrow" d="M 370 186 H 425"/>
   <rect class="gate" x="435" y="125" width="300" height="122"/>
-  <text class="number" x="459" y="154">02 · PRECHECK</text><text class="heading" x="459" y="186">Confirm a safe start</text>
-  <text class="body" x="459" y="216">Backups, capacity, service health,</text><text class="body" x="459" y="237">cluster state, and change window.</text>
+  <text class="number" x="459" y="154">02 · PRECHECK</text><text class="heading" x="459" y="186">Validate the installer</text>
+  <text class="body" x="459" y="216">Confirm the Windows host and</text><text class="body" x="459" y="237">upgrade package are ready.</text>
   <path class="arrow" d="M 745 186 H 800"/>
   <rect class="gate" x="810" y="125" width="330" height="122"/>
-  <text class="number" x="834" y="154">03 · CONTROL PLANE</text><text class="heading" x="834" y="186">Maintain coordinating roles</text>
-  <text class="body" x="834" y="216">Apply role-specific steps, restart,</text><text class="body" x="834" y="237">and validate before dependent tiers.</text>
-  <rect class="role" x="830" y="279" width="142" height="48"/><text class="role-text" x="901" y="309" text-anchor="middle">Cluster Manager</text>
-  <rect class="role" x="984" y="279" width="136" height="48"/><text class="role-text" x="1052" y="309" text-anchor="middle">License Manager</text>
-  <rect class="role" x="830" y="339" width="142" height="48"/><text class="role-text" x="901" y="369" text-anchor="middle">Deployer</text>
-  <rect class="role" x="984" y="339" width="136" height="48"/><text class="role-text" x="1052" y="369" text-anchor="middle">Other Managers</text>
+  <text class="number" x="834" y="154">03 · PROTECT</text><text class="heading" x="834" y="186">Back up Splunk state</text>
+  <text class="body" x="834" y="216">Stop Splunk and protect important</text><text class="body" x="834" y="237">configuration and operational state.</text>
+  <rect class="role" x="830" y="279" width="142" height="48"/><text class="role-text" x="901" y="309" text-anchor="middle">Role wrapper</text>
+  <rect class="role" x="984" y="279" width="136" height="48"/><text class="role-text" x="1052" y="309" text-anchor="middle">Scheduled Task</text>
+  <rect class="role" x="830" y="339" width="142" height="48"/><text class="role-text" x="901" y="369" text-anchor="middle">Backup state</text>
+  <rect class="role" x="984" y="339" width="136" height="48"/><text class="role-text" x="1052" y="369" text-anchor="middle">Capture logs</text>
   <path class="arrow" d="M 975 397 V 426"/>
   <rect class="gate" x="810" y="438" width="330" height="122"/>
-  <text class="number" x="834" y="467">04 · CLUSTERED TIERS</text><text class="heading" x="834" y="499">Work in bounded batches</text>
-  <text class="body" x="834" y="529">Indexers and search-head members</text><text class="body" x="834" y="550">must return healthy before progress.</text>
+  <text class="number" x="834" y="467">04 · UPGRADE</text><text class="heading" x="834" y="499">Run the Windows MSI</text>
+  <text class="body" x="834" y="529">Install unattended and retain MSI</text><text class="body" x="834" y="550">output for troubleshooting.</text>
   <path class="arrow" d="M 800 499 H 745"/>
   <rect class="gate" x="435" y="438" width="300" height="122"/>
-  <text class="number" x="459" y="467">05 · EDGE ROLES</text><text class="heading" x="459" y="499">Complete data-path nodes</text>
-  <text class="body" x="459" y="529">Maintain heavy forwarders and</text><text class="body" x="459" y="550">confirm expected forwarding state.</text>
+  <text class="number" x="459" y="467">05 · RECOVER</text><text class="heading" x="459" y="499">Restart and recover</text>
+  <text class="body" x="459" y="529">Restart Splunk, with Windows Service</text><text class="body" x="459" y="550">Control fallback when required.</text>
   <path class="arrow" d="M 425 499 H 370"/>
   <rect class="gate" x="60" y="438" width="300" height="122"/>
-  <text class="number" x="84" y="467">06 · VERIFY</text><text class="heading" x="84" y="499">Close with evidence</text>
-  <text class="body" x="84" y="529">Validate service, cluster, ingestion,</text><text class="body" x="84" y="550">search, exceptions, and handover.</text>
+  <text class="number" x="84" y="467">06 · VERIFY</text><text class="heading" x="84" y="499">Check and summarize</text>
+  <text class="body" x="84" y="529">Verify service, version, ports,</text><text class="body" x="84" y="550">checkpoints, and final summary.</text>
   <path d="M 210 428 V 274 H 795" fill="none" stroke="#5f7892" stroke-width="2" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
-  <text x="230" y="300" fill="#8fa5bb" font-family="Segoe UI, Arial, sans-serif" font-size="14">Stop, record, remediate, and resume from the last healthy gate</text>
+  <text x="230" y="300" fill="#8fa5bb" font-family="Segoe UI, Arial, sans-serif" font-size="14">Operator reviews the result before starting the next platform component</text>
 </svg>
