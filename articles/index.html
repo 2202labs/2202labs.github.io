@@ -1,0 +1,13 @@
+---
+layout: default
+title: Articles
+description: Technical notes and production-minded guidance across security, Splunk, reliability, observability, and AI-assisted operations.
+permalink: /articles/
+---
+<section class="section"><div class="container">
+  <p class="eyebrow">Technical knowledge base</p><h1>Articles</h1>
+  <p class="case-subtitle">Curated engineering guidance grounded in operational constraints, evidence, and maintainability.</p>
+  <div class="project-grid domain-grid">{% for domain in site.data.domains %}<article class="project-card"><p class="card-tag">Knowledge domain</p><h2><a href="{{ '/articles/' | append: domain.slug | append: '/' | relative_url }}">{{ domain.name }}</a></h2><p>{{ domain.description }}</p></article>{% endfor %}</div>
+  {% assign flagships = site.articles | where: 'flagship', true | sort: 'date' | reverse %}{% if flagships.size > 0 %}<div class="section-heading"><p class="eyebrow">Flagship engineering</p><h2>Pinned technical work</h2></div><div class="project-grid">{% for article in flagships limit:5 %}{% include article-card.html article=article %}{% endfor %}</div>{% endif %}
+  {% assign planned = site.articles | where_exp: 'article', 'article.flagship != true' %}{% if planned.size > 0 %}<div class="section-heading"><p class="eyebrow">Article pipeline</p><h2>Planned technical work</h2></div><div class="project-grid">{% for article in planned %}{% include article-card.html article=article %}{% endfor %}</div>{% endif %}
+</div></section>

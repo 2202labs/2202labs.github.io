@@ -1,0 +1,26 @@
+title: 2202 Labs
+description: Engineering reliable security and observability systems with Splunk.
+url: https://2202labs.github.io
+baseurl: ""
+timezone: Asia/Singapore
+logo: /assets/images/og-preview.png
+markdown: kramdown
+collections:
+  articles:
+    output: true
+    permalink: /articles/:name/
+defaults:
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+      social_image: /assets/images/og-preview.png
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+exclude:
+  - README.md
+  - README2.md
+  - _templates
+  - vendor

@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="section article-shell">
+  {% include breadcrumbs.html %}
+  <header class="article-header">
+    <p class="eyebrow">{{ page.primary_domain }} · {{ page.article_type }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="case-subtitle">{{ page.summary | default: page.description }}</p>
+    <div class="case-meta" aria-label="Article metadata">
+      <span>Status: {{ page.status | default: 'published' | capitalize }}</span><span>Evidence: {{ page.evidence_level }}</span><span>Level: {{ page.content_level }}</span>
+      {% if page.reading_time %}<span>{{ page.reading_time }} min read</span>{% endif %}
+      {% if page.updated %}<span>Updated {{ page.updated | date: '%-d %B %Y' }}</span>{% endif %}
+      {% if page.target_roles.size > 0 %}<span>For: {{ page.target_roles | join: ', ' }}</span>{% endif %}
+      {% if page.has_spl %}<span>SPL included</span>{% endif %}{% if page.has_diagram %}<span>Diagram included</span>{% endif %}{% if page.has_dashboard %}<span>Dashboard included</span>{% endif %}
+    </div>
+    {% if page.secondary_domains.size > 0 or page.topics.size > 0 %}<p class="article-meta">{% if page.secondary_domains.size > 0 %}Also: {{ page.secondary_domains | join: ', ' }}{% endif %}{% if page.topics.size > 0 %} · Topics: {{ page.topics | join: ', ' }}{% endif %}</p>{% endif %}
+  </header>
+  <div class="article-content">{{ content }}</div>
+  {% if page.related_social_post %}<aside class="related-reading"><h2>Related social post</h2><p><a href="{{ page.related_social_post }}">{{ page.social_platform }} · {{ page.social_medium }}</a>{% if page.social_post_date %} · {{ page.social_post_date | date: '%-d %B %Y' }}{% endif %}</p></aside>{% endif %}
+  {% if page.related_articles %}<aside class="related-reading"><h2>Related reading</h2><ul>{% for path in page.related_articles %}{% assign related = site.articles | where: 'slug', path | first %}{% if related %}<li><a href="{{ related.url | relative_url }}">{{ related.title }}</a></li>{% endif %}{% endfor %}</ul></aside>{% endif %}
+  {% if page.related_projects %}<aside class="related-reading"><h2>Related projects</h2><ul>{% for project in page.related_projects %}<li><a href="{{ project.url | relative_url }}">{{ project.title }}</a></li>{% endfor %}</ul></aside>{% endif %}
+</article>

@@ -1,43 +1,38 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2202 Labs | Engineering Portfolio</title>
+  <title>2202 Labs | Splunk Engineering Knowledge Base</title>
   <meta
     name="description"
-    content="2202 Labs is the engineering portfolio of Gabriel Wu, focused on Splunk, SIEM, infrastructure operations, and practical automation."
+    content="Engineering reliable security and observability systems with Splunk. Technical knowledge, projects, and operational experience from Gabriel Wu."
   >
-  <meta property="og:title" content="2202 Labs | Engineering Portfolio">
-  <meta property="og:description" content="Engineering portfolio of Gabriel Wu, focused on Splunk, SIEM, infrastructure operations, and practical automation.">
+  <meta property="og:title" content="2202 Labs | Splunk Engineering Knowledge Base">
+  <meta property="og:description" content="Engineering reliable security and observability systems with Splunk.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://2202labs.github.io/">
   <!-- Export assets/images/og-preview.svg to assets/images/og-preview.png before publishing -->
   <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
+  <link rel="canonical" href="https://2202labs.github.io/">
+  <link rel="alternate" type="application/atom+xml" title="2202 Labs" href="https://2202labs.github.io/feed.xml">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 </head>
 <body id="top">
-  <header class="site-header">
-    <div class="container nav-shell">
-      <a class="brand" href="#top">2202 Labs</a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Featured Work</a>
-        <a href="#competencies">Competencies</a>
-        <a href="#approach">Approach</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% include header.html %}
 
-  <main>
+  <main id="main-content">
     <section class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">2202 Labs</p>
-          <h1>Splunk / SIEM Engineer |<br>Platform Operations, Security Logging, and Automation</h1>
+          <h1>Engineering reliable security and observability systems with Splunk.</h1>
+          <p class="case-subtitle">Splunk Engineering · Detection Engineering · Platform Reliability · SRE &amp; Observability · AI-Assisted Operations</p>
           <p class="hero-intro">
             I build operational tooling for Splunk, security logging, and platform support
             workflows, with a strong focus on reliability, recovery handling, and reducing manual
@@ -56,7 +51,8 @@
             enterprise and government-style operational constraints.
           </p>
           <div class="button-row">
-            <a class="button button-primary" href="#projects">View Featured Work</a>
+            <a class="button button-primary" href="/articles/">Explore Articles</a>
+            <a class="button button-secondary" href="#projects">View Projects</a>
             <a class="button button-secondary" href="assets/pdf/Gabriel_Wu_Resume.pdf" download>Download Resume</a>
             <a class="button button-secondary" href="https://github.com/skyredt" target="_blank" rel="noreferrer">GitHub Projects</a>
             <a class="button button-secondary" href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -83,21 +79,31 @@
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container section-shell">
+    <section class="section" id="flagship-engineering">
+      <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>Operational engineering with a systems mindset.</h2>
+          <p class="eyebrow">Flagship Engineering</p>
+          <h2>Deep technical work, backed by operational evidence.</h2>
         </div>
-        <div class="section-copy">
-          <p>
-            I'm a SIEM and Splunk engineer with over 15 years in enterprise IT operations,
-            including on-site delivery for a public-sector client. My recent work has
-            focused on Splunk Enterprise administration, data onboarding, SPL-based dashboards and
-            reporting, audit evidence support, and platform hardening across RHEL and Windows.
-            I've also designed and implemented six security logging use cases, working across
-            operational requirements, monitoring, compliance, and day-to-day supportability.
-          </p>
+        {% assign flagships = site.articles | where: 'flagship', true | sort: 'series_order' %}
+        <div class="project-grid flagship-grid">
+          {% for article in flagships limit:3 %}{% include article-card.html article=article %}{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="knowledge-domains">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Five Knowledge Domains</p>
+          <h2>A practical knowledge base for secure, reliable platforms.</h2>
+        </div>
+        <div class="project-grid domain-grid">
+          <article class="project-card"><p class="card-tag">Domain 01</p><h3>Splunk Engineering</h3><p>Platform design, search workflows, and maintainable operations.</p><a class="card-link" href="/articles/splunk-engineering/">Browse domain</a></article>
+          <article class="project-card"><p class="card-tag">Domain 02</p><h3>Detection Engineering</h3><p>Evidence-led detection design, validation, tuning, and governance.</p><a class="card-link" href="/articles/detection-engineering/">Browse domain</a></article>
+          <article class="project-card"><p class="card-tag">Domain 03</p><h3>Platform Reliability</h3><p>Safe maintenance, recovery, capacity, and lifecycle engineering.</p><a class="card-link" href="/articles/platform-reliability/">Browse domain</a></article>
+          <article class="project-card"><p class="card-tag">Domain 04</p><h3>SRE &amp; Observability</h3><p>Telemetry, service health, failure analysis, and sustainable operations.</p><a class="card-link" href="/articles/sre-observability/">Browse domain</a></article>
+          <article class="project-card"><p class="card-tag">Domain 05</p><h3>AI-Assisted Operations</h3><p>Governed AI patterns that reduce toil while keeping engineers accountable.</p><a class="card-link" href="/articles/ai-assisted-operations/">Browse domain</a></article>
         </div>
       </div>
     </section>
@@ -163,6 +169,25 @@
           </article>
 
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">How I Approach Engineering</p><h2>Decisions shaped by long-term operability.</h2></div>
+        <div class="principle-grid">
+          <article class="principle-card"><h3>Cost-aware design</h3><p>Choose solutions that solve the problem without creating unnecessary spend or platform drag.</p></article>
+          <article class="principle-card"><h3>Low-maintenance implementation</h3><p>Prefer clear, supportable systems over fragile complexity that becomes a burden to operate.</p></article>
+          <article class="principle-card"><h3>Operational reliability</h3><p>Design with observability, failure handling, and practical day-two support in mind from the start.</p></article>
+          <article class="principle-card"><h3>Purposeful automation</h3><p>Automate where it removes real toil, improves repeatability, and keeps the operating model simple.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container section-shell">
+        <div class="section-heading"><p class="eyebrow">About</p><h2>Operational engineering with a systems mindset.</h2></div>
+        <div class="section-copy"><p>I'm a SIEM and Splunk engineer with over 15 years in enterprise IT operations, including on-site delivery for a public-sector client. My recent work has focused on Splunk Enterprise administration, data onboarding, SPL-based dashboards and reporting, audit evidence support, and platform hardening across RHEL and Windows. I've also designed and implemented six security logging use cases, working across operational requirements, monitoring, compliance, and day-to-day supportability.</p></div>
       </div>
     </section>
 
@@ -243,33 +268,6 @@
       </div>
     </section>
 
-    <section class="section" id="approach">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">How I Approach Engineering</p>
-          <h2>Decisions shaped by long-term operability.</h2>
-        </div>
-        <div class="principle-grid">
-          <article class="principle-card">
-            <h3>Cost-aware design</h3>
-            <p>Choose solutions that solve the problem without creating unnecessary spend or platform drag.</p>
-          </article>
-          <article class="principle-card">
-            <h3>Low-maintenance implementation</h3>
-            <p>Prefer clear, supportable systems over fragile complexity that becomes a burden to operate.</p>
-          </article>
-          <article class="principle-card">
-            <h3>Operational reliability</h3>
-            <p>Design with observability, failure handling, and practical day-two support in mind from the start.</p>
-          </article>
-          <article class="principle-card">
-            <h3>Purposeful automation</h3>
-            <p>Automate where it removes real toil, improves repeatability, and keeps the operating model simple.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="resume">
       <div class="container">
         <div class="resume-card">
@@ -332,11 +330,6 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-shell">
-      <p>2202 Labs</p>
-      <p>&copy; 2026 Gabriel Wu</p>
-    </div>
-  </footer>
+  {% include footer.html %}
 </body>
 </html>

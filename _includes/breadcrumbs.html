@@ -1,0 +1,3 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol><li><a href="{{ '/' | relative_url }}">Home</a></li>{% if page.collection == 'articles' %}<li><a href="{{ '/articles/' | relative_url }}">Articles</a></li>{% endif %}<li aria-current="page">{{ page.title }}</li></ol>
+</nav>

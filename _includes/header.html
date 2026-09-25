@@ -1,0 +1,10 @@
+<header class="site-header">
+  <div class="container nav-shell">
+    <a class="brand" href="{{ '/' | relative_url }}">2202 Labs</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      {% for item in site.data.navigation %}
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

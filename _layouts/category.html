@@ -1,0 +1,8 @@
+---
+layout: default
+---
+<section class="section"><div class="container">
+  {% include breadcrumbs.html %}
+  <p class="eyebrow">Knowledge domain</p><h1>{{ page.title }}</h1><p class="case-subtitle">{{ page.description }}</p>
+  <div class="project-grid">{% assign domain_count = 0 %}{% for article in site.articles %}{% if article.primary_domain == page.title or article.secondary_domains contains page.title %}{% assign domain_count = domain_count | plus: 1 %}{% include article-card.html article=article heading_level=2 %}{% endif %}{% endfor %}{% if domain_count == 0 %}<p class="empty-state">Articles are being prepared. Placeholder material is not presented as completed work.</p>{% endif %}</div>
+</div></section>

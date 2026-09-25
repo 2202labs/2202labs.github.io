@@ -1,0 +1,15 @@
+- slug: splunk-engineering
+  name: Splunk Engineering
+  description: Production-minded Splunk platform design, search workflows, and maintainable operations.
+- slug: detection-engineering
+  name: Detection Engineering
+  description: Evidence-led detection design, validation, tuning, and operational governance.
+- slug: platform-reliability
+  name: Platform Reliability
+  description: Safe maintenance, recovery, capacity, and lifecycle engineering for critical platforms.
+- slug: sre-observability
+  name: SRE & Observability
+  description: Telemetry, service health, failure analysis, and sustainable operational practices.
+- slug: ai-assisted-operations
+  name: AI-Assisted Operations
+  description: Governed uses of AI that reduce toil while keeping engineers accountable.
