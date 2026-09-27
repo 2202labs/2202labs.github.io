@@ -36,9 +36,12 @@
       {% for item in site.data.navigation %}
         { title: {{ item.label | jsonify }}, type: "PAGE", href: {{ item.url | relative_url | jsonify }} },
       {% endfor %}
-      {% assign published_articles = site.articles | where_exp: 'article', 'article.status == "ready" or article.status == "published"' %}
-      {% for article in published_articles %}
-        { title: {{ article.title | jsonify }}, type: "ARTICLE", href: {{ article.url | relative_url | jsonify }}, keywords: {{ article.summary | default: article.description | append: ' ' | append: article.primary_domain | append: ' ' | append: article.secondary_domains | append: ' ' | append: article.topics | jsonify }} },
+      {% for article in site.articles %}
+        {% if article.status == "ready" %}
+          { title: {{ article.title | jsonify }}, type: "ARTICLE", href: {{ article.url | relative_url | jsonify }}, keywords: {{ article.summary | default: article.description | append: ' ' | append: article.primary_domain | append: ' ' | append: article.secondary_domains | append: ' ' | append: article.topics | jsonify }} },
+        {% elsif article.status == "published" %}
+          { title: {{ article.title | jsonify }}, type: "ARTICLE", href: {{ article.url | relative_url | jsonify }}, keywords: {{ article.summary | default: article.description | append: ' ' | append: article.primary_domain | append: ' ' | append: article.secondary_domains | append: ' ' | append: article.topics | jsonify }} },
+        {% endif %}
       {% endfor %}
       {% for project in site.static_files %}
         {% if project.path contains '/projects/' and project.extname == '.html' %}
