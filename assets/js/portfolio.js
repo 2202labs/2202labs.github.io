@@ -224,7 +224,14 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#skip-intro")?.addEventListener("click", () => finishEntrance(false));
   entrance?.addEventListener("cancel", () => finishEntrance(false));
   $("#replay")?.addEventListener("click", () => startEntrance(true));
-  if (motion.matches) $("#replay") && ($("#replay").textContent = "▶ Play intro (motion)");
+  const setReplayState = () => {
+    const replay = $("#replay");
+    if (!replay) return;
+    replay.querySelector("span").textContent = motion.matches ? "Play intro (motion)" : "Replay intro";
+    replay.querySelector(".icon-play").hidden = !motion.matches;
+    replay.querySelector(".icon-replay").hidden = motion.matches;
+  };
+  setReplayState();
   let seen = false;
   try {
     seen = sessionStorage.getItem("2202-intro-seen") === "1";
@@ -236,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cancelAnimationFrame(signalFrame);
       $("#signal") && ($("#signal").style.opacity = 0);
     }
-    $("#replay") && ($("#replay").textContent = motion.matches ? "▶ Play intro (motion)" : "↻ Replay intro");
+    setReplayState();
   });
 
   window.addEventListener("scroll", updateProgress, { passive: true });

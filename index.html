@@ -29,13 +29,13 @@ body_class: home-template
     <div class="years"><strong>16+ years</strong><span>in IT</span></div>
     <p>Splunk / SIEM <span>·</span> Platform Operations <span>·</span> Automation</p>
     <div class="actions">
-      <a class="button primary" href="#projects">Explore projects <span>→</span></a>
-      <a class="button" href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}">View résumé <span>↗</span></a>
+      <a class="button primary" href="#projects">Explore projects {% include icon-arrow-right.html %}</a>
+      <a class="button" href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}">View résumé {% include icon-external.html %}</a>
     </div>
   </div>
   <div class="home-foot">
     <span class="mono">Complex systems. Practical engineering.</span>
-    <button id="replay" type="button">↻ Replay intro</button>
+    <button id="replay" type="button">{% include icon-replay.html %}{% include icon-play.html %}<span>Replay intro</span></button>
   </div>
 </section>
 
@@ -45,7 +45,6 @@ body_class: home-template
       <p class="eyebrow">01 / Professional Experience</p>
       <h1>Built on experience<span>.</span></h1>
     </div>
-    <a class="button" href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}">View résumé ↗</a>
   </div>
   <div class="experience-layout">
     <aside>
@@ -80,19 +79,19 @@ body_class: home-template
   <div class="project-list">
     <details class="project">
       <summary><span class="num">01</span><div><h2>Splunk Utility Tool 4.0</h2><span class="tag">Python / Tkinter / Splunk Management API</span></div><p>Controlled saved-search regeneration with explicit review and post-dispatch verification.</p><span class="plus" aria-hidden="true">+</span></summary>
-      <div class="project-detail"><div><p>Select reports across apps, choose a Custom range or daily, weekly and monthly slices, confirm the dispatch plan and reconcile the available evidence. A submitted request is not treated as proof of delivery.</p><a class="source-link" href="{{ '/projects/splunk-utility-tool.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Select</span><span style="--i:1">Review</span><span style="--i:2">Dispatch</span><span style="--i:3">Verify</span></div></div>
+      <div class="project-detail"><div><p>Select reports across apps, choose a Custom range or daily, weekly and monthly slices, confirm the dispatch plan and reconcile the available evidence. A submitted request is not treated as proof of delivery.</p><a class="source-link" href="{{ '/projects/splunk-utility-tool.html' | relative_url }}">Read full case study {% include icon-external.html %}</a></div><div class="pipeline"><span style="--i:0">Select</span><span style="--i:1">Review</span><span style="--i:2">Dispatch</span><span style="--i:3">Verify</span></div></div>
     </details>
     <details class="project">
       <summary><span class="num">02</span><div><h2>Operational Log Onboarding</h2><span class="tag">Splunk / Governance / Security Logging</span></div><p>Log onboarding shaped around review needs, retention and long-term supportability.</p><span class="plus" aria-hidden="true">+</span></summary>
-      <div class="project-detail"><div><p>A practical governance framework for privileged-user activity review and account review, connecting data requirements to an operationally supportable logging process.</p><a class="source-link" href="{{ '/projects/log-onboarding-governance.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Scope</span><span style="--i:1">Onboard</span><span style="--i:2">Validate</span><span style="--i:3">Review</span></div></div>
+      <div class="project-detail"><div><p>A practical governance framework for privileged-user activity review and account review, connecting data requirements to an operationally supportable logging process.</p><a class="source-link" href="{{ '/projects/log-onboarding-governance.html' | relative_url }}">Read full case study {% include icon-external.html %}</a></div><div class="pipeline"><span style="--i:0">Scope</span><span style="--i:1">Onboard</span><span style="--i:2">Validate</span><span style="--i:3">Review</span></div></div>
     </details>
     <details class="project">
       <summary><span class="num">03</span><div><h2>Splunk Platform Maintenance Automation</h2><span class="tag">RHEL / Windows / Bash / PowerShell</span></div><p>Role-aware maintenance with health gates, bounded changes and recovery checkpoints.</p><span class="plus" aria-hidden="true">+</span></summary>
-      <div class="project-detail"><div><p>The public case study makes platform roles, dependency order, prechecks and recovery points explicit. Operators validate each role and retain control when a health gate fails.</p><a class="source-link" href="{{ '/projects/splunk-platform-maintenance-automation.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Precheck</span><span style="--i:1">Change</span><span style="--i:2">Validate</span><span style="--i:3">Recover</span></div></div>
+      <div class="project-detail"><div><p>The public case study makes platform roles, dependency order, prechecks and recovery points explicit. Operators validate each role and retain control when a health gate fails.</p><a class="source-link" href="{{ '/projects/splunk-platform-maintenance-automation.html' | relative_url }}">Read full case study {% include icon-external.html %}</a></div><div class="pipeline"><span style="--i:0">Precheck</span><span style="--i:1">Change</span><span style="--i:2">Validate</span><span style="--i:3">Recover</span></div></div>
     </details>
     <details class="project">
       <summary><span class="num">04</span><div><h2>Timesheet Reconciliation &amp; Reporting</h2><span class="tag">Python / Offline Desktop / Completed Prototype</span></div><p>Attendance reconciliation, exception review and audit-friendly reporting.</p><span class="plus" aria-hidden="true">+</span></summary>
-      <div class="project-detail"><div><p>An offline desktop prototype for reviewing timesheet exceptions, recording administrative decisions and selecting management-reporting outputs. Public evidence uses sanitized simulated data.</p><a class="source-link" href="{{ '/projects/timesheet-workflow-automation.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Import</span><span style="--i:1">Reconcile</span><span style="--i:2">Review</span><span style="--i:3">Report</span></div></div>
+      <div class="project-detail"><div><p>An offline desktop prototype for reviewing timesheet exceptions, recording administrative decisions and selecting management-reporting outputs. Public evidence uses sanitized simulated data.</p><a class="source-link" href="{{ '/projects/timesheet-workflow-automation.html' | relative_url }}">Read full case study {% include icon-external.html %}</a></div><div class="pipeline"><span style="--i:0">Import</span><span style="--i:1">Reconcile</span><span style="--i:2">Review</span><span style="--i:3">Report</span></div></div>
     </details>
   </div>
 </section>
@@ -122,15 +121,15 @@ body_class: home-template
           <h2>{{ article.title | replace: ': What Actually Makes a Detection Production-Ready?', '' }}</h2>
           <p>{{ article.summary }}</p>
           <span class="mono">{{ article.primary_domain }} · {{ article.reading_time }} min read · {{ article.evidence_level }}</span>
-          <span class="mono read-label">Read article →</span>
+          <span class="mono read-label">Read article {% include icon-arrow-right.html %}</span>
         </div>
-        <span>↗</span>
+        {% include icon-external.html %}
       </a>
     {% endfor %}
   </div>
   <div class="empty" data-empty-articles hidden>
     <p>Articles in this topic are being prepared. Placeholder material is not presented as completed work.</p>
-    <button type="button" data-topic-reset>View all articles →</button>
+    <button type="button" data-topic-reset>View all articles {% include icon-arrow-right.html %}</button>
   </div>
 </section>
 
@@ -144,12 +143,12 @@ body_class: home-template
   <div class="contact-layout">
     <div>
       <p class="contact-intro">Based in Singapore. Open to permanent, full-time roles in Splunk, SIEM, platform operations and automation.</p>
-      <a class="contact-email" href="mailto:twotwozero2@gmail.com">twotwozero2@gmail.com ↗</a>
+      <a class="contact-email" href="mailto:twotwozero2@gmail.com">twotwozero2@gmail.com {% include icon-external.html %}</a>
     </div>
     <div class="contact-links">
-      <a href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
-      <a href="https://github.com/skyredt" target="_blank" rel="noopener"><span>GitHub projects</span><span>↗</span></a>
-      <a href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}"><span>Résumé · PDF</span><span>↗</span></a>
+      <a href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noopener"><span>LinkedIn</span>{% include icon-external.html %}</a>
+      <a href="https://github.com/skyredt" target="_blank" rel="noopener"><span>GitHub projects</span>{% include icon-external.html %}</a>
+      <a href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}"><span>Résumé · PDF</span>{% include icon-external.html %}</a>
     </div>
   </div>
 </section>

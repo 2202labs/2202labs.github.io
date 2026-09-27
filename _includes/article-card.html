@@ -3,5 +3,5 @@
   {% assign card_heading = include.heading_level | default: 3 %}<h{{ card_heading }}><a href="{{ include.article.url | relative_url }}">{{ include.article.title }}</a></h{{ card_heading }}>
   <p>{{ include.article.summary | default: include.article.description }}</p>
   <p class="article-meta">{% if include.article.reading_time %}{{ include.article.reading_time }} min read · {% endif %}{{ include.article.target_roles | join: ', ' }}</p>
-  <span class="read-label">Read article →</span>
+  <span class="read-label">Read article {% include icon-arrow-right.html %}</span>
 </article>

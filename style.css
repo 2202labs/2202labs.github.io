@@ -384,6 +384,42 @@ main {
   transform: translateY(-2px);
 }
 
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  color: currentColor;
+  vertical-align: -0.125em;
+}
+
+.button .icon,
+.read-label .icon,
+.source-link .icon,
+.contact-email .icon,
+.contact-links .icon,
+[data-topic-reset] .icon,
+#skip-intro .icon,
+#replay .icon {
+  width: 0.95em;
+  height: 0.95em;
+}
+
+.source-link,
+.read-label,
+.contact-email,
+[data-topic-reset],
+#skip-intro,
+#replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+#replay .icon[hidden] {
+  display: none;
+}
+
 .button.primary {
   border-color: var(--accent);
   color: #171913;
