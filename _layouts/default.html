@@ -14,11 +14,22 @@
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
   <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/portfolio.js' | relative_url }}"></script>
 </head>
 <body class="{{ page.body_class }}">
   <a class="skip-link" href="#main-content">Skip to content</a>
+  <dialog id="entrance" aria-label="2202 Labs introduction">
+    <div class="entrance-title">2202 Labs<span></span><small>Infrastructure / Logging / Automation</small></div>
+    <button id="skip-intro" type="button">Skip intro →</button>
+  </dialog>
   {% include header.html %}
   <main id="main-content">{{ content }}</main>
   {% include footer.html %}
+  <dialog id="search-dialog" aria-label="Search portfolio">
+    <div class="search-top"><h2>Search</h2><button id="close-search" type="button" aria-label="Close search">×</button></div>
+    <input id="search-input" type="search" placeholder="Search projects, articles, topics..." autocomplete="off">
+    <div id="search-results"></div>
+    <p class="search-hint">Ctrl/⌘ K opens search. Escape closes it.</p>
+  </dialog>
 </body>
 </html>

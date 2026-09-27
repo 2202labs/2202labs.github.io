@@ -6,5 +6,6 @@
         <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {% endfor %}
     </nav>
+    <button class="search-open" type="button" aria-label="Search portfolio">⌕ <span>⌘ K</span></button>
   </div>
 </header>

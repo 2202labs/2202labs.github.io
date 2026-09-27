@@ -1,10 +1,10 @@
 - label: Home
   url: /
-- label: Articles
-  url: /articles/
+- label: Experience
+  url: /#experience
 - label: Projects
   url: /#projects
-- label: About
-  url: /#about
-- label: Resume
-  url: /assets/pdf/Gabriel_Wu_Resume.pdf
+- label: Articles
+  url: /#articles
+- label: Contact
+  url: /#contact

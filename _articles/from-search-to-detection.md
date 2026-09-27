@@ -346,7 +346,7 @@ A production candidate should pass several different forms of validation. Passin
 
 Positive tests should use approved, non-sensitive commands in a controlled environment. Record the event time, index time, host, expected fields, search execution time, and final result. Negative tests should represent actual benign patterns, not invented examples chosen simply because they do not match.
 
-Timing deserves explicit attention. A correct event can still be missed if it arrives after a scheduled search window has closed. Measure observed delay and test events near both time boundaries. The related article [Why Didn't the Detection Fire? Understanding `_time`, `_indextime`, and Late-Arriving Data]({{ '/articles/why-didnt-detection-fire/' | relative_url }}) develops that problem in more detail.
+Timing deserves explicit attention. A correct event can still be missed if it arrives after a scheduled search window has closed. Measure observed delay and test events near both time boundaries. Late-arriving data deserves its own focused treatment because `_time`, `_indextime`, and scheduled-search windows can each affect detection behavior.
 
 Validation should produce repeatable evidence: test case, expected outcome, observed outcome, source event, result, reviewer, and date. That makes future changes to SPL, parsing, scheduling, or exclusions safer to assess.
 
