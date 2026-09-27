@@ -25,7 +25,7 @@ layout: default
           {% assign section_head = section | split: '</h2>' | first %}
           {% assign section_id = section_head | split: '"' | first %}
           {% assign section_title = section_head | split: '">' | last | strip_html %}
-          <a href="#{{ section_id }}">{{ forloop.index | prepend: '0' | slice: -2, 2 }} {{ section_title }}</a>
+          <a href="#{{ section_id }}">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }} {{ section_title }}</a>
         {% endfor %}
       {% else %}
         <p class="toc-placeholder">Article sections</p>
