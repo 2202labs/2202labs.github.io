@@ -1,335 +1,154 @@
 ---
-layout: null
+layout: default
+title: Gabriel Wu
+description: Splunk and SIEM engineering portfolio for Gabriel Wu, focused on platform operations, security logging, reliability, and practical automation.
+body_class: home-template
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2202 Labs | Splunk Engineering Knowledge Base</title>
-  <meta
-    name="description"
-    content="Engineering reliable security and observability systems with Splunk. Technical knowledge, projects, and operational experience from Gabriel Wu."
-  >
-  <meta property="og:title" content="2202 Labs | Splunk Engineering Knowledge Base">
-  <meta property="og:description" content="Engineering reliable security and observability systems with Splunk.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://2202labs.github.io/">
-  <!-- Export assets/images/og-preview.svg to assets/images/og-preview.png before publishing -->
-  <meta property="og:image" content="https://2202labs.github.io/assets/images/og-preview.png">
-  <link rel="canonical" href="https://2202labs.github.io/">
-  <link rel="alternate" type="application/atom+xml" title="2202 Labs" href="https://2202labs.github.io/feed.xml">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-</head>
-<body id="top">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  {% include header.html %}
 
-  <main id="main-content">
-    <section class="hero section">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">2202 Labs</p>
-          <h1>Engineering reliable security and observability systems with Splunk.</h1>
-          <p class="case-subtitle">Splunk Engineering · Detection Engineering · Platform Reliability · SRE &amp; Observability · AI-Assisted Operations</p>
-          <p class="hero-intro">
-            I build operational tooling for Splunk, security logging, and platform support
-            workflows, with a strong focus on reliability, recovery handling, and reducing manual
-            follow-up during recurring operational work. My background spans enterprise
-            infrastructure, SIEM support, and platform engineering, with experience supporting
-            government-style environments and delivering solutions that are easier to operate,
-            maintain, and scale.
-          </p>
-          <p class="hero-intro">
-            Currently targeting senior Splunk, SIEM, platform operations, and automation roles
-            where hands-on operational judgment matters. Based in Singapore and open to
-            permanent, full-time roles.
-          </p>
-          <p class="hero-intro">
-            Some project details are intentionally sanitized because the work is based on
-            enterprise and government-style operational constraints.
-          </p>
-          <div class="button-row">
-            <a class="button button-primary" href="/articles/">Explore Articles</a>
-            <a class="button button-secondary" href="#projects">View Projects</a>
-            <a class="button button-secondary" href="assets/pdf/Gabriel_Wu_Resume.pdf" download>Download Resume</a>
-            <a class="button button-secondary" href="https://github.com/skyredt" target="_blank" rel="noreferrer">GitHub Projects</a>
-            <a class="button button-secondary" href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+<section id="home" class="page home-page">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">2202 Labs</p>
+      <h1>Gabriel Wu<span>.</span></h1>
+      <h2>Splunk / SIEM Engineer</h2>
+      <p>Platform operations. Security logging.<br>Practical automation.</p>
+      <div class="location mono">Singapore</div>
+    </div>
+    <div class="hero-art" aria-label="Infrastructure engineering model">
+      <img src="{{ '/assets/images/engineering-model.png' | relative_url }}" alt="Graphite infrastructure systems connected to observability and automation checkpoints" width="1536" height="1024" fetchpriority="high">
+      <span class="art-label infrastructure">Infrastructure</span>
+      <span class="art-label observability">Observability</span>
+      <span class="art-label automation">Automation</span>
+      <svg viewBox="0 0 1536 1024" aria-hidden="true">
+        <path id="signal-path" d="M357 348 L498 409 M1015 593 L1201 679 L1318 735 L1390 774" fill="none"></path>
+        <circle id="signal" r="6" fill="#ffe2bd"></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="years"><strong>15+ years</strong><span>in IT</span></div>
+    <p>Splunk / SIEM <span>·</span> Platform Operations <span>·</span> Automation</p>
+    <div class="actions">
+      <a class="button primary" href="#projects">Explore projects <span>→</span></a>
+      <a class="button" href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}">View résumé <span>↗</span></a>
+    </div>
+  </div>
+  <div class="home-foot">
+    <span class="mono">Complex systems. Practical engineering.</span>
+    <button id="replay" type="button">↻ Replay intro</button>
+  </div>
+</section>
+
+<section id="experience" class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">01 / Professional Experience</p>
+      <h1>Built on experience<span>.</span></h1>
+    </div>
+    <a class="button" href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}">View résumé ↗</a>
+  </div>
+  <div class="experience-layout">
+    <aside>
+      <h2>Operational engineering<br>with a systems mindset.</h2>
+      <p>Enterprise infrastructure, security logging and platform support. Focused on making systems easier to operate, maintain and recover.</p>
+      <p class="mono">Singapore / Enterprise IT</p>
+    </aside>
+    <div class="career-list">
+      <div class="career-row"><span class="date">SEP 2022 — NOW</span><div><h3>Cybersecurity / Splunk Engineer</h3><p class="company">NCS · Seconded to DSTA</p><p>Splunk platform governance, log onboarding, dashboards, reporting, automation and RHEL maintenance. Implemented six security logging use cases to support security reviews and audit readiness.</p></div></div>
+      <div class="career-row"><span class="date">NOV 2018 — AUG 2022</span><div><h3>Wintel Engineer</h3><p class="company">NCS</p><p>Windows Server, Hyper-V and Nutanix operations, patching, vulnerability remediation, production troubleshooting and disaster-recovery support.</p></div></div>
+      <div class="career-row"><span class="date">MAY 2016 — OCT 2018</span><div><h3>Systems Engineer</h3><p class="company">ST Electronics (Info-comm Systems)</p><p>Infrastructure and network support, server administration, monitoring, operational reporting and root-cause analysis.</p></div></div>
+      <div class="career-row"><span class="date">APR 2015 — APR 2016</span><div><h3>NOC &amp; IT Support Engineer</h3><p class="company">Evvotec</p><p>Network monitoring, incident documentation and customer infrastructure support.</p></div></div>
+      <div class="career-row"><span class="date">FEB 2014 — APR 2015</span><div><h3>IT Engineer</h3><p class="company">A-speed Infotech</p><p>End-user support, server and network maintenance, and security administration.</p></div></div>
+    </div>
+  </div>
+  <div class="credentials">
+    <div><p class="eyebrow">Certifications</p><h3>Splunk Enterprise Certified Admin</h3><p>2026 · Active</p><h3>Splunk Core Certified Power User</h3><p>2025 · Active</p></div>
+    <div><p class="eyebrow">Education</p><h3>University of Portsmouth</h3><p>Computer Science / Information Technology<br>Cybersecurity &amp; Forensics Computing<br>Second Class Honours (Upper Division) · 2022</p></div>
+    <div><p class="eyebrow">Core Capabilities</p><p>Splunk Enterprise · SIEM · Data onboarding<br>Windows Server · RHEL · Hyper-V · Nutanix<br>Python · Bash · PowerShell<br>Monitoring · Recovery · Platform hardening</p></div>
+  </div>
+</section>
+
+<section id="projects" class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">02 / Selected Engineering Work</p>
+      <h1>Practical tools.<br>Real operational problems<span>.</span></h1>
+    </div>
+    <p>Public case studies and sanitized evidence.</p>
+  </div>
+  <div class="project-list">
+    <details class="project">
+      <summary><span class="num">01</span><div><h2>Splunk Utility Tool 4.0</h2><span class="tag">Python / Tkinter / Splunk Management API</span></div><p>Controlled saved-search regeneration with explicit review and post-dispatch verification.</p><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="project-detail"><div><p>Select reports across apps, choose a Custom range or daily, weekly and monthly slices, confirm the dispatch plan and reconcile the available evidence. A submitted request is not treated as proof of delivery.</p><a class="source-link" href="{{ '/projects/splunk-utility-tool.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Select</span><span style="--i:1">Review</span><span style="--i:2">Dispatch</span><span style="--i:3">Verify</span></div></div>
+    </details>
+    <details class="project">
+      <summary><span class="num">02</span><div><h2>Operational Log Onboarding</h2><span class="tag">Splunk / Governance / Security Logging</span></div><p>Log onboarding shaped around review needs, retention and long-term supportability.</p><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="project-detail"><div><p>A practical governance framework for privileged-user activity review and account review, connecting data requirements to an operationally supportable logging process.</p><a class="source-link" href="{{ '/projects/log-onboarding-governance.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Scope</span><span style="--i:1">Onboard</span><span style="--i:2">Validate</span><span style="--i:3">Review</span></div></div>
+    </details>
+    <details class="project">
+      <summary><span class="num">03</span><div><h2>Splunk Platform Maintenance Automation</h2><span class="tag">RHEL / Windows / Bash / PowerShell</span></div><p>Role-aware maintenance with health gates, bounded changes and recovery checkpoints.</p><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="project-detail"><div><p>The public case study makes platform roles, dependency order, prechecks and recovery points explicit. Operators validate each role and retain control when a health gate fails.</p><a class="source-link" href="{{ '/projects/splunk-platform-maintenance-automation.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Precheck</span><span style="--i:1">Change</span><span style="--i:2">Validate</span><span style="--i:3">Recover</span></div></div>
+    </details>
+    <details class="project">
+      <summary><span class="num">04</span><div><h2>Timesheet Reconciliation &amp; Reporting</h2><span class="tag">Python / Offline Desktop / Completed Prototype</span></div><p>Attendance reconciliation, exception review and audit-friendly reporting.</p><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="project-detail"><div><p>An offline desktop prototype for reviewing timesheet exceptions, recording administrative decisions and selecting management-reporting outputs. Public evidence uses sanitized simulated data.</p><a class="source-link" href="{{ '/projects/timesheet-workflow-automation.html' | relative_url }}">Read full case study ↗</a></div><div class="pipeline"><span style="--i:0">Import</span><span style="--i:1">Reconcile</span><span style="--i:2">Review</span><span style="--i:3">Report</span></div></div>
+    </details>
+  </div>
+</section>
+
+<section id="articles" class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">03 / Engineering Notes</p>
+      <h1>From practice<br>to understanding<span>.</span></h1>
+    </div>
+    <p>Technical writing on secure, reliable platforms.</p>
+  </div>
+  <div class="filters" aria-label="Article topics">
+    <button type="button" data-topic="All" aria-pressed="true">All</button>
+    <button type="button" data-topic="Splunk">Splunk</button>
+    <button type="button" data-topic="Detection">Detection</button>
+    <button type="button" data-topic="Reliability">Reliability</button>
+    <button type="button" data-topic="SRE">SRE</button>
+    <button type="button" data-topic="AI">AI</button>
+  </div>
+  <div id="article-list">
+    {% assign flagships = site.articles | where: 'flagship', true | sort: 'series_order' %}
+    {% for article in flagships %}
+      <a class="article-row" data-article-card data-topics="{{ article.primary_domain }} {{ article.secondary_domains | join: ' ' }} {{ article.topics | join: ' ' }}" href="{{ article.url | relative_url }}">
+        <span class="num">0{{ forloop.index }}</span>
+        <div>
+          <h2>{{ article.title | replace: ': What Actually Makes a Detection Production-Ready?', '' }}</h2>
+          <p>{{ article.summary }}</p>
+          <span class="mono">{{ article.primary_domain }} · {{ article.reading_time }} min read · {{ article.evidence_level }}</span>
+          <span class="mono read-label">Read article →</span>
         </div>
+        <span>↗</span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="empty" data-empty-articles hidden>
+    <p>Articles in this topic are being prepared. Placeholder material is not presented as completed work.</p>
+    <button type="button" data-topic-reset>View all articles →</button>
+  </div>
+</section>
 
-        <aside class="hero-panel" aria-label="Engineering summary">
-          <p class="panel-label">Focus Areas</p>
-          <div class="panel-stack">
-            <div class="panel-item">
-              <span class="panel-value">15+ Years</span>
-              <p>Enterprise operations, support engineering, and production platform ownership.</p>
-            </div>
-            <div class="panel-item">
-              <span class="panel-value">Splunk and SIEM</span>
-              <p>Operational tooling, log onboarding, search workflows, and scalable execution design.</p>
-            </div>
-            <div class="panel-item">
-              <span class="panel-value">Automation-first</span>
-              <p>Python-led workflow improvements that reduce toil without increasing maintenance load.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="flagship-engineering">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Flagship Engineering</p>
-          <h2>Deep technical work, backed by operational evidence.</h2>
-        </div>
-        {% assign flagships = site.articles | where: 'flagship', true | sort: 'series_order' %}
-        <div class="project-grid flagship-grid">
-          {% for article in flagships limit:3 %}{% include article-card.html article=article %}{% endfor %}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="knowledge-domains">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Five Knowledge Domains</p>
-          <h2>A practical knowledge base for secure, reliable platforms.</h2>
-        </div>
-        <div class="project-grid domain-grid">
-          <article class="project-card"><p class="card-tag">Domain 01</p><h3>Splunk Engineering</h3><p>Platform design, search workflows, and maintainable operations.</p><a class="card-link" href="/articles/splunk-engineering/">Browse domain</a></article>
-          <article class="project-card"><p class="card-tag">Domain 02</p><h3>Detection Engineering</h3><p>Evidence-led detection design, validation, tuning, and governance.</p><a class="card-link" href="/articles/detection-engineering/">Browse domain</a></article>
-          <article class="project-card"><p class="card-tag">Domain 03</p><h3>Platform Reliability</h3><p>Safe maintenance, recovery, capacity, and lifecycle engineering.</p><a class="card-link" href="/articles/platform-reliability/">Browse domain</a></article>
-          <article class="project-card"><p class="card-tag">Domain 04</p><h3>SRE &amp; Observability</h3><p>Telemetry, service health, failure analysis, and sustainable operations.</p><a class="card-link" href="/articles/sre-observability/">Browse domain</a></article>
-          <article class="project-card"><p class="card-tag">Domain 05</p><h3>AI-Assisted Operations</h3><p>Governed AI patterns that reduce toil while keeping engineers accountable.</p><a class="card-link" href="/articles/ai-assisted-operations/">Browse domain</a></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Featured Work</p>
-          <h2>Selected work across tooling, workflow automation, and log operations.</h2>
-        </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <p class="card-tag">Featured Build</p>
-            <h3>Splunk Utility Tool 4.0</h3>
-            <p>
-              Python-based operational tooling for controlled Splunk saved-search regeneration,
-              with Custom single-window dispatch, Daily/Weekly/Monthly sliced reruns, and
-              pre-dispatch confirmation of the active time range and total dispatch count.
-            </p>
-            <div class="card-links">
-              <a class="card-link" href="projects/splunk-utility-tool.html">Project page</a>
-              <a class="card-link" href="https://github.com/skyredt/splunk-utility-tool" target="_blank" rel="noreferrer">View source code</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <p class="card-tag">Governance Case Study</p>
-            <h3>Operational Approach to Log Onboarding</h3>
-            <p>
-              A practical framework for onboarding Splunk data to support privileged-user activity
-              review, account review, retention alignment, and long-term operational
-              supportability.
-            </p>
-            <div class="card-links">
-              <a class="card-link" href="projects/log-onboarding-governance.html">Project page</a>
-              <a class="card-link" href="https://github.com/skyredt/splunk-log-onboarding-governance" target="_blank" rel="noreferrer">View evidence pack</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <p class="card-tag">Completed Prototype</p>
-            <h3>Timesheet Reconciliation &amp; Management Reporting Tool</h3>
-            <p>
-              A completed offline Python desktop prototype for timesheet and attendance
-              reconciliation, exception review, audit-friendly admin decisions, and selectable
-              management-reporting outputs using sanitized simulated data.
-            </p>
-            <div class="card-links">
-              <a class="card-link" href="projects/timesheet-workflow-automation.html">Project page</a>
-              <a class="card-link" href="https://github.com/skyredt/timesheet-management-reporting-tool" target="_blank" rel="noreferrer">View source code</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <p class="card-tag">Platform Engineering / Windows Upgrade Automation</p>
-            <h3>Splunk Platform Maintenance Automation</h3>
-            <p>
-              Production-used Windows automation for node-level Splunk Enterprise upgrades, with
-              role-specific checks, unattended MSI installation, backups, checkpoints, and detailed
-              recovery evidence. Platform-wide orchestration is the next phase.
-            </p>
-            <a class="card-link" href="projects/splunk-platform-maintenance-automation.html">Project page</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="approach">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">How I Approach Engineering</p><h2>Decisions shaped by long-term operability.</h2></div>
-        <div class="principle-grid">
-          <article class="principle-card"><h3>Cost-aware design</h3><p>Choose solutions that solve the problem without creating unnecessary spend or platform drag.</p></article>
-          <article class="principle-card"><h3>Low-maintenance implementation</h3><p>Prefer clear, supportable systems over fragile complexity that becomes a burden to operate.</p></article>
-          <article class="principle-card"><h3>Operational reliability</h3><p>Design with observability, failure handling, and practical day-two support in mind from the start.</p></article>
-          <article class="principle-card"><h3>Purposeful automation</h3><p>Automate where it removes real toil, improves repeatability, and keeps the operating model simple.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container section-shell">
-        <div class="section-heading"><p class="eyebrow">About</p><h2>Operational engineering with a systems mindset.</h2></div>
-        <div class="section-copy"><p>I'm a SIEM and Splunk engineer with over 15 years in enterprise IT operations, including on-site delivery for a public-sector client. My recent work has focused on Splunk Enterprise administration, data onboarding, SPL-based dashboards and reporting, audit evidence support, and platform hardening across RHEL and Windows. I've also designed and implemented six security logging use cases, working across operational requirements, monitoring, compliance, and day-to-day supportability.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="competencies">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Technical Competencies</p>
-          <h2>Core engineering capabilities.</h2>
-        </div>
-        <div class="competency-grid">
-          <article class="info-card">
-            <h3>SIEM and Logging</h3>
-            <ul>
-              <li>Splunk Enterprise administration</li>
-              <li>Log onboarding and normalization</li>
-              <li>Search workflows and knowledge objects</li>
-              <li>Retention, governance, and data reliability</li>
-            </ul>
-          </article>
-
-          <article class="info-card">
-            <h3>Platforms, Monitoring, and Systems</h3>
-            <ul>
-              <li>Windows and Linux operations</li>
-              <li>Enterprise infrastructure support</li>
-              <li>Service health, monitoring, and alerting</li>
-              <li>Platform maintenance and production troubleshooting</li>
-              <li>SolarWinds and SCCM administration</li>
-              <li>WSUS deployment, SSL enablement, and patch administration</li>
-            </ul>
-          </article>
-
-          <article class="info-card">
-            <h3>Automation and Scripting</h3>
-            <ul>
-              <li>Python for internal tooling</li>
-              <li>Python, Bash, and PowerShell automation</li>
-              <li>Workflow simplification and task reduction</li>
-              <li>Practical integration with existing processes</li>
-            </ul>
-          </article>
-
-          <article class="info-card">
-            <h3>Security and Operations</h3>
-            <ul>
-              <li>Vulnerability assessment and remediation support</li>
-              <li>Patching and operational hardening</li>
-              <li>Certificate and protocol transition support</li>
-              <li>Compliance-aware production operations</li>
-              <li>Security support in government environments</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="section-heading credentials-heading">
-          <p class="eyebrow">Credentials</p>
-          <h2>Current Splunk certifications and formal education.</h2>
-        </div>
-        <div class="credential-grid">
-          <article class="info-card">
-            <h3>Splunk Certifications</h3>
-            <ul>
-              <li>Splunk Enterprise Certified Admin — 2026, Active</li>
-              <li>Splunk Core Certified Power User — 2025, Active</li>
-            </ul>
-          </article>
-
-          <article class="info-card">
-            <h3>Education</h3>
-            <p>
-              Bachelor's Degree in Computer Science / Information Technology
-              (Cybersecurity &amp; Forensics Computing)
-            </p>
-            <p>University of Portsmouth — 2022</p>
-            <p>Second Class Honours (Upper Division)</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resume">
-      <div class="container">
-        <div class="resume-card">
-          <div>
-            <p class="eyebrow">Resume</p>
-            <h2>Detailed experience in SIEM, platform operations, infrastructure, and automation engineering.</h2>
-            <p class="resume-copy">
-              Download an ATS-readable PDF with current experience, certifications, and selected
-              project evidence.
-            </p>
-          </div>
-          <a class="button button-primary" href="assets/pdf/Gabriel_Wu_Resume.pdf" download>Download Resume</a>
-        </div>
-        <div class="career-grid" aria-label="Career summary">
-          <article class="career-item">
-            <p class="career-date">2022–Present</p>
-            <h3>Cybersecurity / Splunk Engineer</h3>
-            <p>Splunk administration, six security logging use cases, data onboarding, audit evidence, automation, and RHEL platform maintenance.</p>
-          </article>
-          <article class="career-item">
-            <p class="career-date">2018–2022</p>
-            <h3>Wintel Engineer</h3>
-            <p>Windows Server, Hyper-V, Nutanix, patching, vulnerability remediation, platform troubleshooting, and disaster-recovery support.</p>
-          </article>
-          <article class="career-item">
-            <p class="career-date">2016–2018</p>
-            <h3>Systems Engineer</h3>
-            <p>Infrastructure and network support, server administration, monitoring, operational reporting, and root-cause analysis.</p>
-          </article>
-          <article class="career-item">
-            <p class="career-date">2014–2016</p>
-            <h3>Earlier IT Operations</h3>
-            <p>NOC monitoring, incident documentation, end-user support, and server, network, and security administration.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Contact</p>
-          <h2>Based in Singapore and open to permanent, full-time engineering roles.</h2>
-        </div>
-        <div class="contact-grid">
-          <article class="contact-card">
-            <p class="contact-label">Email</p>
-            <a href="mailto:twotwozero2@gmail.com">twotwozero2@gmail.com</a>
-          </article>
-          <article class="contact-card">
-            <p class="contact-label">GitHub Projects</p>
-            <a href="https://github.com/skyredt" target="_blank" rel="noreferrer">github.com/skyredt</a>
-          </article>
-          <article class="contact-card">
-            <p class="contact-label">LinkedIn</p>
-            <a href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noreferrer">linkedin.com/in/genius2202</a>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  {% include footer.html %}
-</body>
-</html>
+<section id="contact" class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">04 / Contact</p>
+      <h1>Let’s talk about<br>the next challenge<span>.</span></h1>
+    </div>
+  </div>
+  <div class="contact-layout">
+    <div>
+      <p class="contact-intro">Based in Singapore. Open to permanent, full-time roles in Splunk, SIEM, platform operations and automation.</p>
+      <a class="contact-email" href="mailto:twotwozero2@gmail.com">twotwozero2@gmail.com ↗</a>
+    </div>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/genius2202/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+      <a href="https://github.com/skyredt" target="_blank" rel="noopener"><span>GitHub projects</span><span>↗</span></a>
+      <a href="{{ '/assets/pdf/Gabriel_Wu_Resume.pdf' | relative_url }}"><span>Résumé · PDF</span><span>↗</span></a>
+    </div>
+  </div>
+</section>
