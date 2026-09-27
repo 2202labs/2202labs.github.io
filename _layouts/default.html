@@ -23,7 +23,7 @@
     <button id="skip-intro" type="button">Skip intro →</button>
   </dialog>
   {% include header.html %}
-  <main id="main-content">{{ content }}</main>
+  <main id="main-content" tabindex="-1">{{ content }}</main>
   {% include footer.html %}
   <dialog id="search-dialog" aria-label="Search portfolio">
     <div class="search-top"><h2>Search</h2><button id="close-search" type="button" aria-label="Close search">×</button></div>
@@ -31,5 +31,24 @@
     <div id="search-results"></div>
     <p class="search-hint">Ctrl/⌘ K opens search. Escape closes it.</p>
   </dialog>
+  <script>
+    window.portfolioSearchIndex = [
+      {% for item in site.data.navigation %}
+        { title: {{ item.label | jsonify }}, type: "PAGE", href: {{ item.url | relative_url | jsonify }} },
+      {% endfor %}
+      {% assign published_articles = site.articles | where_exp: 'article', 'article.status == "ready" or article.status == "published"' %}
+      {% for article in published_articles %}
+        { title: {{ article.title | jsonify }}, type: "ARTICLE", href: {{ article.url | relative_url | jsonify }}, keywords: {{ article.summary | default: article.description | append: ' ' | append: article.primary_domain | append: ' ' | append: article.secondary_domains | append: ' ' | append: article.topics | jsonify }} },
+      {% endfor %}
+      {% for project in site.static_files %}
+        {% if project.path contains '/projects/' and project.extname == '.html' %}
+          { title: {{ project.basename | replace: '-', ' ' | capitalize | jsonify }}, type: "PROJECT", href: {{ project.path | relative_url | jsonify }} },
+        {% endif %}
+      {% endfor %}
+      {% for topic in site.data.topics %}
+        { title: {{ topic | replace: '-', ' ' | capitalize | jsonify }}, type: "TOPIC", href: {{ '/?topic=' | append: topic | append: '#articles' | relative_url | jsonify }}, topic: {{ topic | jsonify }} },
+      {% endfor %}
+    ];
+  </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ const searchDialog = $("#search-dialog");
 const searchInput = $("#search-input");
 const searchResults = $("#search-results");
 const content = $("#main-content");
+const searchIndex = window.portfolioSearchIndex || [];
 let signalFrame;
 let introTimer;
 let entranceAnimations = [];
@@ -80,10 +81,12 @@ function startEntrance(explicit = false) {
 }
 
 function filterArticles(topic) {
+  if (!topic) return;
   const cards = $$("[data-article-card]");
   let shown = 0;
+  const normalizedTopic = topic.toLowerCase();
   cards.forEach((card) => {
-    const match = topic === "All" || card.dataset.topics.toLowerCase().includes(topic.toLowerCase());
+    const match = topic === "All" || card.dataset.topics.toLowerCase().includes(normalizedTopic);
     card.hidden = !match;
     if (match) shown += 1;
   });
@@ -94,29 +97,12 @@ function filterArticles(topic) {
   }
 }
 
-const searchIndex = [
-  { title: "Home", type: "PAGE", href: "/" },
-  { title: "Experience", type: "PAGE", href: "/#experience" },
-  { title: "Projects", type: "PAGE", href: "/#projects" },
-  { title: "Articles", type: "PAGE", href: "/#articles" },
-  { title: "Contact", type: "PAGE", href: "/#contact" },
-  { title: "Splunk Utility Tool 4.0", type: "PROJECT", href: "/projects/splunk-utility-tool.html" },
-  { title: "Operational Log Onboarding", type: "PROJECT", href: "/projects/log-onboarding-governance.html" },
-  { title: "Splunk Platform Maintenance Automation", type: "PROJECT", href: "/projects/splunk-platform-maintenance-automation.html" },
-  { title: "Timesheet Reconciliation & Reporting", type: "PROJECT", href: "/projects/timesheet-workflow-automation.html" },
-  { title: "From Search to Detection", type: "ARTICLE", href: "/articles/from-search-to-detection/" },
-  { title: "Splunk", type: "TOPIC", href: "/#articles", topic: "Splunk" },
-  { title: "Detection", type: "TOPIC", href: "/#articles", topic: "Detection" },
-  { title: "Reliability", type: "TOPIC", href: "/#articles", topic: "Reliability" },
-  { title: "SRE", type: "TOPIC", href: "/#articles", topic: "SRE" },
-  { title: "AI", type: "TOPIC", href: "/#articles", topic: "AI" }
-];
 let activeResult = 0;
 let lastFocus;
 
 function drawResults() {
   const query = searchInput.value.trim().toLowerCase();
-  const results = searchIndex.filter((item) => `${item.type} ${item.title}`.toLowerCase().includes(query)).slice(0, 9);
+  const results = searchIndex.filter((item) => `${item.type} ${item.title} ${item.keywords || ""}`.toLowerCase().includes(query)).slice(0, 9);
   activeResult = Math.min(activeResult, Math.max(results.length - 1, 0));
   searchResults.innerHTML = results.length ? results.map((item, index) => `<button class="search-result ${index === activeResult ? "selected" : ""}" type="button" data-result="${index}"><span>${item.title}</span><small>${item.type}</small></button>`).join("") : '<p class="empty">No results. Try “Splunk” or “projects”.</p>';
   $$("[data-result]", searchResults).forEach((button) => {
@@ -129,9 +115,46 @@ function activateResult(item) {
   if (!item) return;
   closeSearch();
   if (item.topic) {
-    filterArticles(item.topic);
+    try {
+      sessionStorage.setItem("2202-selected-topic", item.topic);
+    } catch {}
+    if ($("#articles")) filterArticles(item.topic);
   }
   window.location.href = item.href;
+}
+
+function applySelectedTopic() {
+  if (!$("#articles")) return;
+  const params = new URLSearchParams(window.location.search);
+  let topic = params.get("topic");
+  if (!topic) {
+    try {
+      topic = sessionStorage.getItem("2202-selected-topic");
+      sessionStorage.removeItem("2202-selected-topic");
+    } catch {}
+  }
+  if (topic) filterArticles(topic);
+}
+
+function slugify(text) {
+  return text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+}
+
+function buildArticleToc() {
+  const toc = $("[data-article-toc]");
+  const article = $(".article-content");
+  if (!toc || !article) return;
+  const headings = $$("h2, h3", article);
+  if (!headings.length) {
+    toc.hidden = true;
+    return;
+  }
+  toc.innerHTML = headings.map((heading, index) => {
+    if (!heading.id) heading.id = slugify(heading.textContent || `section-${index + 1}`);
+    const level = heading.tagName === "H3" ? "3" : "2";
+    const number = String(index + 1).padStart(2, "0");
+    return `<a href="#${heading.id}" data-level="${level}">${number} ${heading.textContent.trim()}</a>`;
+  }).join("");
 }
 
 function openSearch() {
@@ -166,6 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $$("[data-topic]").forEach((button) => button.addEventListener("click", () => filterArticles(button.dataset.topic)));
   $("[data-topic-reset]")?.addEventListener("click", () => filterArticles("All"));
+  applySelectedTopic();
+  buildArticleToc();
 
   $(".search-open")?.addEventListener("click", openSearch);
   $("#close-search")?.addEventListener("click", closeSearch);
