@@ -478,6 +478,17 @@ main {
   font-size: 14px;
 }
 
+.career-row ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.career-row li + li {
+  margin-top: 8px;
+}
+
 .career-row p,
 .project summary p,
 .project-detail p,
