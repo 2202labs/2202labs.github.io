@@ -1,0 +1,58 @@
+name: Article live verification
+
+on:
+  workflow_run:
+    workflows: ['pages build and deployment']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Download the deployed Pages artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: _pages-artifact
+      - name: Extract the expected deployed site
+        run: |
+          mkdir -p _site
+          tar -xf _pages-artifact/artifact.tar -C _site
+      - name: Install browser tooling
+        working-directory: _tools/article-workflow
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Verify live articles after Pages deployment
+        env:
+          DEPLOYMENT_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            if node _tools/article-workflow/validate.cjs --base HEAD^ --live https://2202labs.github.io --artifact-commit "$DEPLOYMENT_SHA"; then exit 0; fi
+            if [ "$attempt" -lt 6 ]; then sleep 15; fi
+          done
+          exit 1
+      - name: Upload live report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: article-live-${{ github.event.workflow_run.head_sha }}
+          path: _article-checks/
+          if-no-files-found: warn

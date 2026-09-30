@@ -1,0 +1,8 @@
+{
+  "name": "2202-article-workflow",
+  "private": true,
+  "version": "1.0.0",
+  "engines": { "node": ">=22" },
+  "scripts": { "validate": "node validate.cjs", "test": "node --test test.cjs" },
+  "devDependencies": { "playwright": "1.62.1" }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "2202 Labs article workflow"
+  short_description: "Prepare article PRs and publish approved commits"
+  default_prompt: "Use $2202-article to prepare the attached completed article for Gabriel's review."
