@@ -1,0 +1,70 @@
+name: Article validation
+
+on:
+  pull_request:
+    paths:
+      - '_articles/**'
+      - '_layouts/**'
+      - '_includes/**'
+      - 'articles/**'
+      - '_data/**'
+      - 'assets/**'
+      - 'style.css'
+      - '_config.yml'
+      - '_tools/article-workflow/**'
+      - '.github/workflows/article-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: article-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/_tools/article-workflow/Gemfile
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Install browser tooling
+        working-directory: _tools/article-workflow
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Check whitespace and build
+        run: |
+          if [ -n "$BASE_SHA" ]; then git diff --check "$BASE_SHA" HEAD; fi
+          bundle exec ruby _tools/article-workflow/build.rb
+      - name: Test workflow failure paths
+        working-directory: _tools/article-workflow
+        run: npm test
+      - name: Validate articles
+        run: |
+          if [ -n "$BASE_SHA" ]; then
+            node _tools/article-workflow/validate.cjs --base "$BASE_SHA"
+          else
+            node _tools/article-workflow/validate.cjs
+          fi
+      - name: Upload report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: article-validation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: _article-checks/
+          if-no-files-found: warn

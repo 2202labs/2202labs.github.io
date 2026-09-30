@@ -24,3 +24,4 @@ exclude:
   - README2.md
   - _templates
   - vendor
+  - AGENTS.md
