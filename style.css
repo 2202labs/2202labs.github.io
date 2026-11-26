@@ -488,6 +488,66 @@ main {
   color: var(--muted);
 }
 
+.engineering-approach {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: clamp(24px, 5vw, 75px);
+  border-top: 1px solid var(--line);
+}
+
+.engineering-approach h2 {
+  font-size: clamp(30px, 3.3vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.engineering-approach header p {
+  max-width: 350px;
+  margin-top: 18px;
+}
+
+.approach-principles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.approach-principles li {
+  padding-block: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.approach-principles h3 {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.engineering-approach p,
+.approach-status {
+  color: var(--muted);
+}
+
+.approach-principles p {
+  margin-top: 5px;
+}
+
+.approach-principles .source-link {
+  margin-top: 8px;
+  border-color: currentColor;
+}
+
+.approach-principles .source-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.approach-status {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
 .career-row {
   display: grid;
   grid-template-columns: 145px 1fr;
@@ -1195,6 +1255,8 @@ figure.engineering-graphic figcaption {
 }
 
 @media (max-width: 760px) {
+  .engineering-approach { grid-template-columns: 1fr; }
+
   body {
     padding-bottom: 74px;
   }
